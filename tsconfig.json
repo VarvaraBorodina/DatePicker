@@ -1,0 +1,23 @@
+{
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "rollup.config.js"],
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "rootDir": ".",
+    "jsx": "react",
+    "declaration": true,
+    "declarationDir": "types",
+    "sourceMap": true,
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "lib": ["DOM", "ESNext"],
+    "allowSyntheticDefaultImports": true,
+    "emitDeclarationOnly": true,
+    "resolveJsonModule": true
+  }
+}
