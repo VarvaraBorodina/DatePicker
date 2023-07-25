@@ -1,5 +1,5 @@
 {
-  "include": ["./src/**/*.ts"],
+  "include": ["src"],
   "exclude": ["node_modules", "rollup.config.js"],
   "compilerOptions": {
     "target": "ES2020",
