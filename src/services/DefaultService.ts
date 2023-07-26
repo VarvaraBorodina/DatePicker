@@ -56,6 +56,10 @@ class DefaultService implements Service {
   }
 
   isStringValidData(dataString: string): boolean {
+    if (dataString.length !== 10) {
+      return false
+    }
+
     const dateParams: string[] = dataString.split(':')
     let isValidDataFlag = true
 

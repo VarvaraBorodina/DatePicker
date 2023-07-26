@@ -20,6 +20,7 @@
     "react-dom": "^18.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "string-width": "^6.1.0",
+    "styled-components": "^6.0.5",
     "tslib": "^2.6.0"
   },
   "devDependencies": {
