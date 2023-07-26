@@ -26,6 +26,8 @@ export interface Service {
 
   getDayTodoFromLocalStorage: (day: string) => Todo[]
   setDayTodoToLocalStorage: (day: string, todo: Todo) => Todo[]
+
+  getDaysWithTodoFromLocalStorage: () => string[]
 }
 
 export default Service

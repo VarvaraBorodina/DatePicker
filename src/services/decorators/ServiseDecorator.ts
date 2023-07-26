@@ -53,5 +53,9 @@ class ServicesDecorator implements Service {
   setDayTodoToLocalStorage(day: string, todo: Todo): Todo[] {
     return this.service.setDayTodoToLocalStorage(day, todo)
   }
+
+  getDaysWithTodoFromLocalStorage(): string[] {
+    return this.service.getDaysWithTodoFromLocalStorage()
+  }
 }
 export default ServicesDecorator
