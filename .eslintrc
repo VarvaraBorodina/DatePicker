@@ -23,7 +23,8 @@
     "no-restricted-exports": "off",
     "import/prefer-default-export": "off",
     "class-methods-use-this": "off",
-    "no-prototype-builtins": "off"
+    "no-prototype-builtins": "off",
+    "react/function-component-definition": "off"
   },
   "settings": {
     "react": {
