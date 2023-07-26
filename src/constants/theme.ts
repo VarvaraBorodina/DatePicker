@@ -5,8 +5,9 @@ const COLORS = {
 }
 
 const SPACES = {
+  XS: 4,
   S: 8,
-  M: 15,
+  M: 16,
 }
 
 const OPACITIES = {

@@ -12,7 +12,7 @@ const InputContainer = styled.div`
 `
 
 const Input = styled.input`
-  width: ${({ theme }) => theme.SIZES.INPUT_WIDTH * 0.75}px;
+  width: ${({ theme }) => theme.SIZES.INPUT_WIDTH * 0.7}px;
   border: none;
   font-size: ${({ theme }) => `${theme.FONT_SIZES.M}`}px;
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
