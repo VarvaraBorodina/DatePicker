@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { DEFAULT_COLOR } from '../../constants/colors'
 
 const Container = styled.div`
   width: ${({ theme }) => theme.SIZES.INPUT_WIDTH}px;
   padding: ${({ theme }) => theme.SPACES.M}px;
+  background-color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
   border-radius: ${({ theme }) => theme.SPACES.S}px;
   border: solid 1px
     ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.S}`};
@@ -25,7 +25,7 @@ const Date = styled.p`
   font-size: ${({ theme }) => `${theme.FONT_SIZES.M}`}px;
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
   font-weight: ${({ theme }) => `${theme.FONT_WEIGHT.S}`};
-  opacity: ${({ theme }) => `0.${theme.OPACITIES.L}`};
+  color: ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.XL}`};
 `
 const InputContainer = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const Input = styled.input`
   font-weight: ${({ theme }) => `${theme.FONT_WEIGHT.S}`};
   opacity: ${({ theme }) => `0.${theme.OPACITIES.L}`};
   border: solid 1px
-    ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.M}`};
+    ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.L}`};
   border-radius: ${({ theme }) => theme.SPACES.S}px;
 
   &:focus {
@@ -56,7 +56,7 @@ const AddButton = styled.button`
     ${({ theme }) => theme.SPACES.S}px;
   border: none;
   border-radius: ${({ theme }) => theme.SPACES.S}px;
-  background-color: ${DEFAULT_COLOR};
+  background-color: ${({ theme }) => `${theme.COLORS.ACCENT_COLOR}`};
   cursor: pointer;
   color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
 `

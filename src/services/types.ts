@@ -10,7 +10,6 @@ export type DaysTodosType = { [key: string]: Todo[] }
 export type Holiday = { day: number; month: number }
 
 export interface Service {
-  color: string
   firstDayOfWeek: FirstDayOfWeek
 
   getCurrentDate: () => Date

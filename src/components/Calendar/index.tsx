@@ -4,15 +4,27 @@ import { Container } from './styled'
 import DateInput from '../DateInput'
 import TodoList from '../TodoList'
 import Global from '../../styles/global'
+import CalendarProps from './types'
+import WeekCalendar from '../WeekCalendar'
 
-const Calendar = () => {
+const Calendar: React.FC<CalendarProps> = ({ color }) => {
   return (
-    <GlobalThemProvider>
+    <GlobalThemProvider color={color}>
       <>
         <Global />
         <Container>
-          <DateInput />
-          <div>Calendar</div>
+          <div>
+            <p>Date</p>
+            <DateInput />
+          </div>
+          <div>
+            <p>From</p>
+            <DateInput />
+            <p>To</p>
+            <DateInput />
+          </div>
+
+          <WeekCalendar />
           <TodoList />
         </Container>
       </>

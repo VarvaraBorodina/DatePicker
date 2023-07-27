@@ -1,15 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { DEFAULT_COLOR } from '../constants/colors'
 import FirstDayOfWeek from '../constants/firstDayOfWeek'
-import { DaysTodosType, Service, Todo } from './types'
+import { Service, Todo } from './types'
 
 class DefaultService implements Service {
-  color: string
-
   firstDayOfWeek: FirstDayOfWeek
 
-  constructor(firstDayOfWeek?: FirstDayOfWeek, color?: string) {
-    this.color = color ?? DEFAULT_COLOR
+  constructor(firstDayOfWeek?: FirstDayOfWeek) {
     this.firstDayOfWeek = firstDayOfWeek ?? FirstDayOfWeek.monday
   }
 

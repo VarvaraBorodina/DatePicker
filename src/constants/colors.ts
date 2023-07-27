@@ -1,2 +1,0 @@
-const DEFAULT_COLOR = '#2F80ED'
-export { DEFAULT_COLOR }
