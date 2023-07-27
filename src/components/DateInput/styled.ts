@@ -6,6 +6,7 @@ const InputContainer = styled.div`
   justify-content: space-between;
   width: ${({ theme }) => theme.SIZES.INPUT_WIDTH}px;
   padding: ${({ theme }) => theme.SPACES.S}px ${({ theme }) => theme.SPACES.M}px;
+  background-color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
   border-radius: ${({ theme }) => theme.SPACES.S}px;
   border: solid 1px
     ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.S}`};
