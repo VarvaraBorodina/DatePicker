@@ -4,13 +4,10 @@ import { Service, Todo } from '../types'
 class ServicesDecorator implements Service {
   service: Service
 
-  color: string
-
   firstDayOfWeek: FirstDayOfWeek
 
   constructor(service: Service) {
     this.service = service
-    this.color = this.service.color
     this.firstDayOfWeek = this.service.firstDayOfWeek
   }
 

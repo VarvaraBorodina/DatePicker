@@ -4,7 +4,7 @@ import MONTH_NAMES from '../../constants/months'
 import WeekendsDecorator from '../../services/decorators/WeekendsDecorator'
 import DefaultService from '../../services/DefaultService'
 import getDayType from '../../utils/getDayType'
-import CalendarHeader from '../CalendarHeader'
+import CalendarHeader from '../MonthHeader'
 import { Container, Dates, Day } from './styled'
 
 const MonthCalendar = () => {

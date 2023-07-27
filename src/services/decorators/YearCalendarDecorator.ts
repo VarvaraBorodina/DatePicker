@@ -23,9 +23,10 @@ class YearCalendarDecorator extends ServicesDecorator {
         firstDayOfMonth.setDate(firstDayOfMonth.getDate() - 1)
       }
       const lastDayOfMonth = new Date(currentYear, i + 1, 0)
-      while (lastDayOfMonth.getDay() !== 6 - indexOfFirstDayOfWeek) {
+      while (lastDayOfMonth.getDay() - 1 !== 4 + indexOfFirstDayOfWeek) {
         lastDayOfMonth.setDate(lastDayOfMonth.getDate() + 1)
       }
+      lastDayOfMonth.setDate(lastDayOfMonth.getDate() + 1)
 
       monthesRanges.push([firstDayOfMonth, lastDayOfMonth])
     }
