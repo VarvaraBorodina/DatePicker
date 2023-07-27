@@ -5,7 +5,7 @@ import DateInput from '../DateInput'
 import TodoList from '../TodoList'
 import Global from '../../styles/global'
 import CalendarProps from './types'
-import WeekCalendar from '../WeekCalendar'
+import YearCalendar from '../YearCalendar'
 
 const Calendar: React.FC<CalendarProps> = ({ color }) => {
   return (
@@ -24,7 +24,7 @@ const Calendar: React.FC<CalendarProps> = ({ color }) => {
             <DateInput />
           </div>
 
-          <WeekCalendar />
+          <YearCalendar />
           <TodoList />
         </Container>
       </>

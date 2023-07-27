@@ -10,4 +10,4 @@ const meta: Meta<typeof Calendar> = {
 export default meta
 
 type Story = StoryObj<typeof meta>
-export const Base: Story = { args: { color: '#CCAFDD' } }
+export const Base: Story = { args: { color: '#f70279' } }
