@@ -10,13 +10,22 @@ const meta: Meta<typeof Calendar> = {
 
 export default meta
 
+const min = new Date(2022, 5, 1)
+const max = new Date(2023, 9, 1)
+
 type Story = StoryObj<typeof meta>
 export const Week: Story = {
-  args: { color: '#f70279', type: CalendarType.week },
+  args: { color: '#f70279', type: CalendarType.week, todoList: true, min, max },
 }
 export const Base: Story = {
-  args: { color: '#f70279', type: CalendarType.month },
+  args: {
+    color: '#f70279',
+    type: CalendarType.month,
+    todoList: true,
+    min,
+    max,
+  },
 }
 export const Year: Story = {
-  args: { color: '#f70279', type: CalendarType.year },
+  args: { color: '#f70279', type: CalendarType.year, todoList: true, min, max },
 }

@@ -18,6 +18,8 @@ const MonthBlock: React.FC<MonthBlockProps> = ({
   getDayTodos,
   saveDayTodo,
   isTodoListAvailable,
+  nextDisable,
+  prevDisable,
 }) => {
   const [dayOnModal, setDayOnModal] = useState<Date | null>(null)
 
@@ -43,6 +45,8 @@ const MonthBlock: React.FC<MonthBlockProps> = ({
           onPrevious={handlePrevRange}
           onNext={handleNextRange}
           withArrows={type !== CalendarType.year}
+          nextDisable={nextDisable}
+          prevDisable={prevDisable}
         />
         <DaysNames firstDayOfWeek={firstDayOfWeek} />
         <Dates>

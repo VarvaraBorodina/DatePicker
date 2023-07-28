@@ -9,18 +9,20 @@ const MonthHeader: React.FC<CalendarHeaderProps> = ({
   withArrows,
   onNext,
   onPrevious,
+  nextDisable,
+  prevDisable,
 }) => {
   return (
     <Container>
       {withArrows && (
-        <Button type="button" onClick={onPrevious}>
-          <LeftArrow />
+        <Button type="button" onClick={onPrevious} disabled={prevDisable}>
+          <LeftArrow disable={prevDisable} />
         </Button>
       )}
       <Title>{title}</Title>
       {withArrows && (
-        <Button type="button" onClick={onNext}>
-          <RightArrow />
+        <Button type="button" onClick={onNext} disabled={nextDisable}>
+          <RightArrow disable={nextDisable} />
         </Button>
       )}
     </Container>

@@ -22,12 +22,12 @@ class MinDateDecorator extends ServiceDecorator {
 
   getPreviousDate(currentDate: Date): Date {
     const newDate = this.service.getPreviousDate(currentDate)
-    return newDate > this.minDate ? newDate : this.minDate
+    return newDate > this.minDate ? newDate : currentDate
   }
 
   getNextDate(currentDate: Date): Date {
     const newDate = this.service.getNextDate(currentDate)
-    return newDate > this.minDate ? newDate : this.minDate
+    return newDate > this.minDate ? newDate : currentDate
   }
 }
 export default MinDateDecorator

@@ -22,12 +22,12 @@ class MaxDateDecorator extends ServiceDecorator {
 
   getPreviousDate(currentDate: Date): Date {
     const newDate = this.service.getPreviousDate(currentDate)
-    return newDate < this.maxDate ? newDate : this.maxDate
+    return newDate < this.maxDate ? newDate : currentDate
   }
 
   getNextDate(currentDate: Date): Date {
     const newDate = this.service.getNextDate(currentDate)
-    return newDate < this.maxDate ? newDate : this.maxDate
+    return newDate < this.maxDate ? newDate : currentDate
   }
 }
 export default MaxDateDecorator
