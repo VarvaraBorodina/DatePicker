@@ -1,7 +1,7 @@
 import FirstDayOfWeek from '../../constants/firstDayOfWeek'
 import { Service, Todo } from '../types'
 
-class ServicesDecorator implements Service {
+class ServiceDecorator implements Service {
   service: Service
 
   firstDayOfWeek: FirstDayOfWeek
@@ -43,7 +43,7 @@ class ServicesDecorator implements Service {
     return this.service.isDayOff(currentDate)
   }
 
-  getDayTodoFromLocalStorage(day: string): Todo[] {
+  getDayTodoFromLocalStorage(day: Date): Todo[] {
     return this.service.getDayTodoFromLocalStorage(day)
   }
 
@@ -55,4 +55,4 @@ class ServicesDecorator implements Service {
     return this.service.getDaysWithTodoFromLocalStorage()
   }
 }
-export default ServicesDecorator
+export default ServiceDecorator

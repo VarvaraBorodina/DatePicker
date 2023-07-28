@@ -1,14 +1,14 @@
 import { DaysTodosType, Todo } from '../types'
-import ServicesDecorator from './ServiseDecorator'
+import ServiceDecorator from './ServiceDecorator'
 
-class TodoListDecorator extends ServicesDecorator {
-  getDayTodoFromLocalStorage(day: string): Todo[] {
+class TodoListDecorator extends ServiceDecorator {
+  getDayTodoFromLocalStorage(day: Date): Todo[] {
     const todosString = localStorage.getItem('todos')
     if (!todosString) {
       return []
     }
     const todos = JSON.parse(todosString)
-    return todos[day] ?? []
+    return todos[day.toUTCString()] ?? []
   }
 
   setDayTodoToLocalStorage(day: string, todo: Todo): Todo[] {

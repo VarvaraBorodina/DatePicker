@@ -1,7 +1,7 @@
 import { Service } from '../types'
-import ServicesDecorator from './ServiseDecorator'
+import ServiceDecorator from './ServiceDecorator'
 
-class MinDateDecorator extends ServicesDecorator {
+class MinDateDecorator extends ServiceDecorator {
   minDate: Date
 
   constructor(service: Service, minDate: Date) {

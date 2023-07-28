@@ -5,6 +5,7 @@ import { Theme } from '../../utils/types'
 
 const Month = styled.div`
   width: ${({ theme }) => theme.SIZES.INPUT_WIDTH}px;
+  height: ${({ theme }) => theme.SIZES.BLOCK_HEIGHT}px;
   padding: ${({ theme }) => theme.SPACES.M}px;
   border-radius: ${({ theme }) => theme.SPACES.S}px;
   border: solid 1px

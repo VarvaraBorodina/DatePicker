@@ -11,8 +11,9 @@ type MonthBlockProps = {
   getDayType: (day: Date) => DayType
   type: CalendarType
   firstDayOfWeek: FirstDayOfWeek
-  daysWithTodos: string[]
-  getDayTodoFromLocalStorage: (day: Date) => Todo[]
+  getDayTodos: (day: Date) => Todo[]
+  saveDayTodo: (day: Date, todo: Todo) => void
+  isTodoListAvailable: boolean
 }
 
 export default MonthBlockProps

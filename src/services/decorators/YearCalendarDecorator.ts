@@ -1,6 +1,6 @@
-import ServicesDecorator from './ServiseDecorator'
+import ServiceDecorator from './ServiceDecorator'
 
-class YearCalendarDecorator extends ServicesDecorator {
+class YearCalendarDecorator extends ServiceDecorator {
   getPreviousDate(currentDate: Date): Date {
     currentDate.setFullYear(currentDate.getFullYear() - 1)
     return currentDate

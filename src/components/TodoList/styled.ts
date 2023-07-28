@@ -2,6 +2,9 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   width: ${({ theme }) => theme.SIZES.INPUT_WIDTH}px;
+  height: ${({ theme }) => theme.SIZES.BLOCK_HEIGHT}px;
+  overflow-y: scroll;
+
   padding: ${({ theme }) => theme.SPACES.M}px;
   background-color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
   border-radius: ${({ theme }) => theme.SPACES.S}px;
@@ -21,7 +24,7 @@ const Button = styled.button`
   background-color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
   cursor: pointer;
 `
-const Date = styled.p`
+const DateTitle = styled.p`
   font-size: ${({ theme }) => `${theme.FONT_SIZES.M}`}px;
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
   font-weight: ${({ theme }) => `${theme.FONT_WEIGHT.S}`};
@@ -34,7 +37,7 @@ const InputContainer = styled.div`
   margin-top: ${({ theme }) => theme.SPACES.S}px;
 `
 const Input = styled.input`
-  width: ${({ theme }) => theme.SIZES.INPUT_WIDTH * 0.65}px;
+  width: ${({ theme }) => theme.SIZES.INPUT_WIDTH * 0.6}px;
   padding: ${({ theme }) => theme.SPACES.XS}px
     ${({ theme }) => theme.SPACES.S}px;
   font-size: ${({ theme }) => `${theme.FONT_SIZES.M}`}px;
@@ -79,7 +82,7 @@ export {
   Input,
   Button,
   Title,
-  Date,
+  DateTitle,
   InputContainer,
   AddButton,
   Todos,

@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import GlobalThemProvider from '../GlobalThemeProvider'
 import { CalendarContainer, Container, Year } from './styled'
-import TodoList from '../TodoList'
 import CalendarProps from './types'
 import createService from '../../services/createService'
 import CalendarHeader from '../CalendarHeader'
@@ -12,11 +11,12 @@ import SelectDataForm from '../SelectDataForm'
 import getMonth from '../../utils/getMonth'
 import useService from '../../hooks/useService'
 import MonthBlock from '../MonthBlock'
+import { Todo } from '../../services/types'
 
 const Calendar: React.FC<CalendarProps> = (props) => {
-  const { color, type } = props
-  const service = useMemo(() => createService(props), [props])
+  const { color, type, todoList } = props
 
+  const service = useMemo(() => createService(props), [props])
   const [currentDate, monthesDates, handleNextRange, handlePreviousRange] =
     useService(service)
 
@@ -31,6 +31,12 @@ const Calendar: React.FC<CalendarProps> = (props) => {
         service
       )
     }
+
+  const getDayTodos = (day: Date) => service.getDayTodoFromLocalStorage(day)
+
+  const saveDayTodo = (day: Date, todo: Todo) => {
+    service.setDayTodoToLocalStorage(day.toUTCString(), todo)
+  }
 
   return (
     <GlobalThemProvider color={color}>
@@ -58,12 +64,13 @@ const Calendar: React.FC<CalendarProps> = (props) => {
                 getDayType={getDayTypeForCurrentCalendarType(monthDates)}
                 type={type ?? CalendarType.month}
                 firstDayOfWeek={service.firstDayOfWeek}
-                daysWithTodos={service.getDaysWithTodoFromLocalStorage()}
+                saveDayTodo={saveDayTodo}
+                getDayTodos={getDayTodos}
+                isTodoListAvailable={todoList}
               />
             ))}
           </Year>
         </CalendarContainer>
-        <TodoList />
       </Container>
     </GlobalThemProvider>
   )

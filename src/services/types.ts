@@ -23,7 +23,7 @@ export interface Service {
   isWeekend: (currentDate: Date) => boolean
   isDayOff: (currentDate: Date) => boolean
 
-  getDayTodoFromLocalStorage: (day: string) => Todo[]
+  getDayTodoFromLocalStorage: (day: Date) => Todo[]
   setDayTodoToLocalStorage: (day: string, todo: Todo) => Todo[]
 
   getDaysWithTodoFromLocalStorage: () => string[]

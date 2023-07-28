@@ -111,7 +111,7 @@ class DefaultService implements Service {
     return false
   }
 
-  getDayTodoFromLocalStorage(day: string): Todo[] {
+  getDayTodoFromLocalStorage(day: Date): Todo[] {
     return []
   }
 
