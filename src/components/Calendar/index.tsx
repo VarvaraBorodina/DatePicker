@@ -14,7 +14,7 @@ import MonthBlock from '../MonthBlock'
 import { Todo } from '../../services/types'
 
 const Calendar: React.FC<CalendarProps> = (props) => {
-  const { color, type, todoList } = props
+  const { color, type, todoList, min, max } = props
 
   const service = useMemo(() => createService(props), [props])
   const [currentDate, monthesDates, handleNextRange, handlePreviousRange] =
@@ -38,6 +38,12 @@ const Calendar: React.FC<CalendarProps> = (props) => {
     service.setDayTodoToLocalStorage(day.toDateString(), todo)
   }
 
+  const isNext = max ? service.getNextDate(new Date(currentDate)) < max : true
+
+  const isPrev = min
+    ? service.getPreviousDate(new Date(currentDate)) > min
+    : true
+
   return (
     <GlobalThemProvider color={color}>
       <Container>
@@ -49,6 +55,8 @@ const Calendar: React.FC<CalendarProps> = (props) => {
               onPrevious={handlePreviousRange}
               onNext={handleNextRange}
               withArrows={type === CalendarType.year}
+              nextDisable={!isNext}
+              prevDisable={!isPrev}
             />
           )}
           <Year>
@@ -67,6 +75,8 @@ const Calendar: React.FC<CalendarProps> = (props) => {
                 saveDayTodo={saveDayTodo}
                 getDayTodos={getDayTodos}
                 isTodoListAvailable={todoList ?? false}
+                nextDisable={!isNext}
+                prevDisable={!isPrev}
               />
             ))}
           </Year>

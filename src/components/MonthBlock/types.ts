@@ -14,6 +14,8 @@ type MonthBlockProps = {
   getDayTodos: (day: Date) => Todo[]
   saveDayTodo: (day: Date, todo: Todo) => void
   isTodoListAvailable: boolean
+  nextDisable: boolean
+  prevDisable: boolean
 }
 
 export default MonthBlockProps
