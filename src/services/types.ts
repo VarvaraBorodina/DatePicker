@@ -28,5 +28,3 @@ export interface Service {
 
   getDaysWithTodoFromLocalStorage: () => string[]
 }
-
-export default Service

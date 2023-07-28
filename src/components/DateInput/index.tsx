@@ -1,12 +1,21 @@
 import React from 'react'
 import CalendarIcon from '../icons/CalendarIcon'
 import CrossIcon from '../icons/CrossIncons'
-import { InputContainer, Input, Error, Button } from './styled'
+import {
+  InputContainer,
+  Input,
+  Error,
+  Button,
+  Title,
+  Container,
+} from './styled'
+import { DateInputProps } from './types'
 
-const DateInput = () => {
+const DateInput: React.FC<DateInputProps> = ({ title }) => {
   return (
-    <>
-      <Error>Invalid Date</Error>
+    <Container>
+      {true && <Error>Invalid Date</Error>}
+      <Title>{title}</Title>
       <InputContainer>
         <CalendarIcon />
         <Input type="text" placeholder="Choose Date" />
@@ -14,7 +23,7 @@ const DateInput = () => {
           <CrossIcon />
         </Button>
       </InputContainer>
-    </>
+    </Container>
   )
 }
 

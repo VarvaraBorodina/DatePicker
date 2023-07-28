@@ -35,7 +35,7 @@ class DefaultService implements Service {
     }
 
     const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0)
-    while (lastDayOfMonth.getDate() - 1 !== 4 + indexOfFirstDayOfWeek) {
+    while (lastDayOfMonth.getDay() !== (6 + indexOfFirstDayOfWeek) % 7) {
       lastDayOfMonth.setDate(lastDayOfMonth.getDate() + 1)
     }
 
