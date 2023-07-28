@@ -1,6 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import THEME from '../../constants/theme'
+import Global from '../../styles/global'
 
 const GlobalThemProvider: React.FC<{
   children: JSX.Element
@@ -9,7 +10,12 @@ const GlobalThemProvider: React.FC<{
   if (color) {
     THEME.COLORS.ACCENT_COLOR = color
   }
-  return <ThemeProvider theme={THEME}>{children}</ThemeProvider>
+  return (
+    <>
+      <Global />
+      <ThemeProvider theme={THEME}>{children}</ThemeProvider>
+    </>
+  )
 }
 
 export default GlobalThemProvider

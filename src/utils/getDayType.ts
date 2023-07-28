@@ -8,7 +8,7 @@ const getDayType = (
   month: number,
   service: Service
 ): DayType => {
-  if (isDatesEqual(day, currentDate)) {
+  if (isDatesEqual(day, currentDate) && month === day.getMonth()) {
     return DayType.chosen
   }
   if (

@@ -1,9 +1,8 @@
-import FirstDayOfWeek from '../../constants/firstDayOfWeek'
-
 type CalendarHeaderProps = {
-  firstDayOfWeek: FirstDayOfWeek
   title: string
   withArrows: boolean
+  onNext: () => void
+  onPrevious: () => void
 }
 
 export { CalendarHeaderProps }

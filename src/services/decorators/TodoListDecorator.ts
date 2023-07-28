@@ -1,7 +1,7 @@
 import { DaysTodosType, Todo } from '../types'
 import ServicesDecorator from './ServiseDecorator'
 
-class TodoListService extends ServicesDecorator {
+class TodoListDecorator extends ServicesDecorator {
   getDayTodoFromLocalStorage(day: string): Todo[] {
     const todosString = localStorage.getItem('todos')
     if (!todosString) {
@@ -42,4 +42,4 @@ class TodoListService extends ServicesDecorator {
   }
 }
 
-export default TodoListService
+export default TodoListDecorator
