@@ -26,7 +26,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
         date,
         currentDate,
         type === CalendarType.year
-          ? getMonth(monthDates)
+          ? getMonth(monthDates, currentDate)
           : currentDate.getMonth(),
         service
       )
@@ -35,7 +35,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
   const getDayTodos = (day: Date) => service.getDayTodoFromLocalStorage(day)
 
   const saveDayTodo = (day: Date, todo: Todo) => {
-    service.setDayTodoToLocalStorage(day.toUTCString(), todo)
+    service.setDayTodoToLocalStorage(day.toDateString(), todo)
   }
 
   return (
@@ -56,7 +56,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
               <MonthBlock
                 key={MONTH_NAMES[index]}
                 title={`${
-                  MONTH_NAMES[getMonth(monthDates)]
+                  MONTH_NAMES[getMonth(monthDates, currentDate)]
                 } ${currentDate.getFullYear()}`}
                 blockDates={monthDates}
                 handleNextRange={handleNextRange}
@@ -66,7 +66,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
                 firstDayOfWeek={service.firstDayOfWeek}
                 saveDayTodo={saveDayTodo}
                 getDayTodos={getDayTodos}
-                isTodoListAvailable={todoList}
+                isTodoListAvailable={todoList ?? false}
               />
             ))}
           </Year>

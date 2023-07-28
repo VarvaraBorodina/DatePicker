@@ -8,7 +8,7 @@ class TodoListDecorator extends ServiceDecorator {
       return []
     }
     const todos = JSON.parse(todosString)
-    return todos[day.toUTCString()] ?? []
+    return todos[day.toDateString()] ?? []
   }
 
   setDayTodoToLocalStorage(day: string, todo: Todo): Todo[] {
