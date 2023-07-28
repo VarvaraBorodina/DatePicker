@@ -1,6 +1,6 @@
-import ServicesDecorator from './ServiseDecorator'
+import ServiceDecorator from './ServiceDecorator'
 
-class WeekendsDecorator extends ServicesDecorator {
+class WeekendsDecorator extends ServiceDecorator {
   isWeekend(currentDate: Date): boolean {
     return currentDate.getDay() === 0 || currentDate.getDay() === 6
   }

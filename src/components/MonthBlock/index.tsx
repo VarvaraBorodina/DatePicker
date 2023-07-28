@@ -5,6 +5,7 @@ import CalendarType from '../../constants/calendarType'
 import MonthBlockProps from './types'
 import DaysNames from '../DaysNames'
 import TodoList from '../TodoList'
+import { Todo } from '../../services/types'
 
 const MonthBlock: React.FC<MonthBlockProps> = ({
   blockDates,
@@ -14,13 +15,26 @@ const MonthBlock: React.FC<MonthBlockProps> = ({
   getDayType,
   type,
   firstDayOfWeek,
-  daysWithTodos,
+  getDayTodos,
+  saveDayTodo,
+  isTodoListAvailable,
 }) => {
   const [dayOnModal, setDayOnModal] = useState<Date | null>(null)
 
   const handleOnDayClick = (day: Date) => () => {
-    setDayOnModal(day)
+    if (isTodoListAvailable) {
+      setDayOnModal(day)
+    }
   }
+
+  const handleOnClose = () => {
+    setDayOnModal(null)
+  }
+
+  const handleOnSave = (day: Date) => (todo: Todo) => {
+    saveDayTodo(day, todo)
+  }
+
   if (!dayOnModal) {
     return (
       <Month key={title}>
@@ -34,9 +48,9 @@ const MonthBlock: React.FC<MonthBlockProps> = ({
         <Dates>
           {blockDates.map((day) => (
             <Day
-              key={day.getTime()}
+              key={day.toISOString()}
               $dayType={getDayType(day)}
-              $hasTodo={daysWithTodos.includes(day.toString())}
+              $hasTodo={getDayTodos(day).length > 0}
               onClick={handleOnDayClick(day)}
             >
               {day.getDate()}
@@ -46,7 +60,14 @@ const MonthBlock: React.FC<MonthBlockProps> = ({
       </Month>
     )
   }
-  return <TodoList />
+  return (
+    <TodoList
+      day={dayOnModal}
+      handleOnClose={handleOnClose}
+      handleOnSave={handleOnSave(dayOnModal)}
+      todos={getDayTodos(dayOnModal)}
+    />
+  )
 }
 
 export default MonthBlock

@@ -1,6 +1,6 @@
-import ServicesDecorator from './ServiseDecorator'
+import ServiceDecorator from './ServiceDecorator'
 
-class WeekCalendarDecorator extends ServicesDecorator {
+class WeekCalendarDecorator extends ServiceDecorator {
   getPreviousDate(currentDate: Date): Date {
     const date = currentDate
     date.setDate(date.getDate() - 7)

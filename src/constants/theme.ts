@@ -22,6 +22,7 @@ const SPACES = {
 
 const SIZES = {
   INPUT_WIDTH: 250,
+  BLOCK_HEIGHT: 250,
 }
 
 const FONTS = {
