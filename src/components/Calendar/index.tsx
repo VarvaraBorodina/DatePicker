@@ -17,8 +17,13 @@ const Calendar: React.FC<CalendarProps> = (props) => {
   const { color, type, todoList, min, max } = props
 
   const service = useMemo(() => createService(props), [props])
-  const [currentDate, monthesDates, handleNextRange, handlePreviousRange] =
-    useService(service)
+  const [
+    currentDate,
+    monthesDates,
+    handleNextRange,
+    handlePreviousRange,
+    changeCurrentDate,
+  ] = useService(service)
 
   const getDayTypeForCurrentCalendarType =
     (monthDates: Date[]) => (date: Date) => {
@@ -44,10 +49,17 @@ const Calendar: React.FC<CalendarProps> = (props) => {
     ? service.getPreviousDate(new Date(currentDate)) > min
     : true
 
+  const isValidDate = (dateString: string) => {
+    return service.isStringValidData(dateString)
+  }
+
   return (
     <GlobalThemProvider color={color}>
       <Container>
-        <SelectDataForm />
+        <SelectDataForm
+          changeCurrentDate={changeCurrentDate}
+          isValidDate={isValidDate}
+        />
         <CalendarContainer>
           {type === CalendarType.year && (
             <CalendarHeader
