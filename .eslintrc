@@ -18,14 +18,16 @@
     "plugin:prettier/recommended",
     "plugin:styled-components-a11y/recommended"
   ],
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "prettier", "simple-import-sort"],
   "rules": {
     "no-restricted-exports": "off",
     "import/prefer-default-export": "off",
     "class-methods-use-this": "off",
     "no-prototype-builtins": "off",
     "react/function-component-definition": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   },
   "settings": {
     "react": {

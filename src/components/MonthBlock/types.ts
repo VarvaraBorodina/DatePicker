@@ -1,7 +1,7 @@
-import CalendarType from '../../constants/calendarType'
-import DayType from '../../constants/dayType'
-import FirstDayOfWeek from '../../constants/firstDayOfWeek'
-import { Todo } from '../../services/types'
+import CalendarType from '@/constants/calendarType'
+import DayType from '@/constants/dayType'
+import FirstDayOfWeek from '@/constants/firstDayOfWeek'
+import { Todo } from '@/services/types'
 
 type MonthBlockProps = {
   title: string

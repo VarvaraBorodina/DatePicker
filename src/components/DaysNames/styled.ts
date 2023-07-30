@@ -9,8 +9,9 @@ const Container = styled.div`
 `
 
 const DayName = styled.p`
-  width: 13%;
-  margin: 5px 1px;
+  width: ${({ theme }) => theme.SIZES.DAY_WIDTH};
+  margin: ${({ theme }) => theme.SPACES.XS}px
+    ${({ theme }) => theme.SIZES.BORDER_WIDTH}px;
   text-align: center;
   font-size: ${({ theme }) => `${theme.FONT_SIZES.M}`}px;
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
@@ -19,4 +20,4 @@ const DayName = styled.p`
   opacity: ${({ theme }) => `0.${theme.OPACITIES.XL}`};
 `
 
-export { DayName, Container }
+export { Container, DayName }

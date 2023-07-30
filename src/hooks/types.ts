@@ -13,4 +13,4 @@ type UseDatesRangeType = [
   (newDate: string) => void,
 ]
 
-export { UseServiceType, UseDatesRangeType }
+export { UseDatesRangeType, UseServiceType }

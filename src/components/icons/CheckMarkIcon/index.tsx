@@ -1,5 +1,6 @@
 import React from 'react'
-import THEME from '../../../constants/theme'
+
+import THEME from '@/constants/theme'
 
 const CheckMarkIcon = () => {
   return (

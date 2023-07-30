@@ -1,4 +1,4 @@
-import { Todo } from '../../services/types'
+import { Todo } from '@/services/types'
 
 type TodoListProps = {
   day: Date

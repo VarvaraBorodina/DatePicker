@@ -1,5 +1,5 @@
-import { DaysTodosType, Todo } from '../types'
-import ServiceDecorator from './ServiceDecorator'
+import ServiceDecorator from '@/services/decorators/ServiceDecorator'
+import { DaysTodosType, Todo } from '@/services/types'
 
 class TodoListDecorator extends ServiceDecorator {
   getDayTodoFromLocalStorage(day: Date): Todo[] {

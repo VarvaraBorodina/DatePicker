@@ -1,6 +1,6 @@
-import DAYS_OFF from '../../constants/daysOff'
-import { Holiday, Service } from '../types'
-import ServiceDecorator from './ServiceDecorator'
+import DAYS_OFF from '@/constants/daysOff'
+import ServiceDecorator from '@/services/decorators/ServiceDecorator'
+import { Holiday, Service } from '@/services/types'
 
 class DaysOffDecorator extends ServiceDecorator {
   holidays: Holiday[]

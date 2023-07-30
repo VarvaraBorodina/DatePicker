@@ -1,4 +1,4 @@
-import FirstDayOfWeek from '../constants/firstDayOfWeek'
+import FirstDayOfWeek from '@/constants/firstDayOfWeek'
 
 export interface Todo {
   id: number

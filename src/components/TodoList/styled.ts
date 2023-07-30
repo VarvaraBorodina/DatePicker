@@ -44,7 +44,7 @@ const Input = styled.input`
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
   font-weight: ${({ theme }) => `${theme.FONT_WEIGHT.S}`};
   opacity: ${({ theme }) => `0.${theme.OPACITIES.L}`};
-  border: solid 1px
+  border: solid ${({ theme }) => theme.SIZES.BORDER_WIDTH}px
     ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.L}`};
   border-radius: ${({ theme }) => theme.SPACES.S}px;
 
@@ -78,13 +78,13 @@ const TodoItem = styled.li`
 `
 
 export {
-  Container,
-  Input,
-  Button,
-  Title,
-  DateTitle,
-  InputContainer,
   AddButton,
-  Todos,
+  Button,
+  Container,
+  DateTitle,
+  Input,
+  InputContainer,
+  Title,
   TodoItem,
+  Todos,
 }

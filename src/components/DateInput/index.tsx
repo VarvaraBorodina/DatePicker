@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
-import TEXT from '../../constants/text'
-import CalendarIcon from '../icons/CalendarIcon'
-import CheckMarkIcon from '../icons/CheckMarkIcon'
-import CrossIcon from '../icons/CrossIcon'
+
+import CalendarIcon from '@/components/icons/CalendarIcon'
+import CheckMarkIcon from '@/components/icons/CheckMarkIcon'
+import CrossIcon from '@/components/icons/CrossIcon'
+import TEXT from '@/constants/text'
+
 import {
-  InputContainer,
-  Input,
-  Error,
   Button,
-  Title,
   Container,
+  Error,
+  Input,
+  InputContainer,
+  Title,
 } from './styled'
 import { DateInputProps } from './types'
 

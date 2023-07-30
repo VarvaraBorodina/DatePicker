@@ -1,4 +1,4 @@
-import { Holiday } from '../services/types'
+import { Holiday } from '@/services/types'
 
 const DAYS_OFF: Holiday[] = [
   { day: 1, month: 1 },

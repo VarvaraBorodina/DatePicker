@@ -23,6 +23,8 @@ const SPACES = {
 const SIZES = {
   INPUT_WIDTH: 250,
   BLOCK_HEIGHT: 250,
+  BORDER_WIDTH: 1,
+  DAY_WIDTH: '13%',
 }
 
 const FONTS = {

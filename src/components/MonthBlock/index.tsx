@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
+
+import CalendarHeader from '@/components/CalendarHeader'
+import DaysNames from '@/components/DaysNames'
+import TodoList from '@/components/TodoList'
+import CalendarType from '@/constants/calendarType'
+import { Todo } from '@/services/types'
+
 import { Dates, Day, Month } from './styled'
-import CalendarHeader from '../CalendarHeader'
-import CalendarType from '../../constants/calendarType'
 import MonthBlockProps from './types'
-import DaysNames from '../DaysNames'
-import TodoList from '../TodoList'
-import { Todo } from '../../services/types'
 
 const MonthBlock: React.FC<MonthBlockProps> = ({
   blockDates,

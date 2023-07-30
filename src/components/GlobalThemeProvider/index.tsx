@@ -1,7 +1,8 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import THEME from '../../constants/theme'
-import Global from '../../styles/global'
+
+import THEME from '@/constants/theme'
+import Global from '@/styles/global'
 
 const GlobalThemProvider: React.FC<{
   children: JSX.Element

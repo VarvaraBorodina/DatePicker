@@ -1,14 +1,15 @@
 import styled from 'styled-components'
-import DayType from '../../constants/dayType'
-import getDayColorsByType from '../../utils/getDayColorsByType'
-import { Theme } from '../../utils/types'
+
+import DayType from '@/constants/dayType'
+import getDayColorsByType from '@/utils/getDayColorsByType'
+import { Theme } from '@/utils/types'
 
 const Month = styled.div`
   width: ${({ theme }) => theme.SIZES.INPUT_WIDTH}px;
   height: ${({ theme }) => theme.SIZES.BLOCK_HEIGHT}px;
   padding: ${({ theme }) => theme.SPACES.M}px;
   border-radius: ${({ theme }) => theme.SPACES.S}px;
-  border: solid 1px
+  border: solid ${({ theme }) => theme.SIZES.BORDER_WIDTH}px
     ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.S}`};
 `
 
@@ -23,7 +24,7 @@ const Day = styled.p<{ $dayType: DayType; $hasTodo: boolean }>`
   font-size: ${({ theme }) => `${theme.FONT_SIZES.S}`}px;
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
   font-weight: ${({ theme }) => `${theme.FONT_WEIGHT.M}`};
-  width: 13%;
+  width: ${({ theme }) => theme.SIZES.DAY_WIDTH};
   padding: ${({ theme }) => theme.SPACES.XS}px
     ${({ theme }) => theme.SPACES.XXS}px;
   border-radius: ${({ theme }) => theme.SPACES.S}px;
@@ -42,8 +43,9 @@ const DaysNames = styled.div`
 `
 
 const DayName = styled.p`
-  width: 13%;
-  margin: 5px 1px;
+  width: ${({ theme }) => theme.SIZES.DAY_WIDTH};
+  margin: ${({ theme }) => theme.SPACES.XS}px
+    ${({ theme }) => theme.SIZES.BORDER_WIDTH}px;
   text-align: center;
   font-size: ${({ theme }) => `${theme.FONT_SIZES.M}`}px;
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
@@ -51,4 +53,4 @@ const DayName = styled.p`
   color: ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}`};
   opacity: ${({ theme }) => `0.${theme.OPACITIES.XL}`};
 `
-export { Month, Dates, Day, DayName, DaysNames }
+export { Dates, Day, DayName, DaysNames, Month }

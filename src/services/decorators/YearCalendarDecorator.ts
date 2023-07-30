@@ -1,4 +1,4 @@
-import ServiceDecorator from './ServiceDecorator'
+import ServiceDecorator from '@/services/decorators/ServiceDecorator'
 
 class YearCalendarDecorator extends ServiceDecorator {
   getPreviousDate(currentDate: Date): Date {
