@@ -5,6 +5,8 @@ import { SelectDataFormProps } from './types'
 
 const SelectDataForm: React.FC<SelectDataFormProps> = ({
   changeCurrentDate,
+  changeFromDate,
+  changeToDate,
   isValidDate,
 }) => {
   return (
@@ -16,12 +18,12 @@ const SelectDataForm: React.FC<SelectDataFormProps> = ({
       />
       <DateInput
         title="From"
-        changeDate={changeCurrentDate}
+        changeDate={changeFromDate}
         isValidDate={isValidDate}
       />
       <DateInput
         title="To"
-        changeDate={changeCurrentDate}
+        changeDate={changeToDate}
         isValidDate={isValidDate}
       />
     </Inputs>
