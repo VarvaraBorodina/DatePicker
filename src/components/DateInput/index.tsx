@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CalendarIcon from '../icons/CalendarIcon'
-import CrossIcon from '../icons/CrossIncons'
+import CheckMarkIcon from '../icons/CheckMarkIcon'
+import CrossIcon from '../icons/CrossIcon'
 import {
   InputContainer,
   Input,
@@ -11,17 +12,62 @@ import {
 } from './styled'
 import { DateInputProps } from './types'
 
-const DateInput: React.FC<DateInputProps> = ({ title }) => {
+const DateInput: React.FC<DateInputProps> = ({
+  title,
+  isValidDate,
+  changeDate,
+}) => {
+  const [inputValue, setInputValue] = useState<string>('')
+  const [error, setError] = useState<boolean>(false)
+  const [dateIsChosen, setDateIsChosen] = useState<boolean>(false)
+
+  const handleOnChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = target
+    const newChar = value[value.length - 1]
+    const regex = /([0-9]|\.)/
+    if (regex.test(newChar) || value === '') {
+      setInputValue(value)
+    }
+  }
+
+  const handleOnCheckMarkClick = () => {
+    if (isValidDate(inputValue)) {
+      setDateIsChosen(true)
+      setError(false)
+      changeDate(inputValue)
+    } else {
+      setError(true)
+    }
+  }
+
+  const handleOnCrossClick = () => {
+    setInputValue('')
+    setError(false)
+    setDateIsChosen(false)
+    changeDate('')
+  }
+
   return (
     <Container>
-      {true && <Error>Invalid Date</Error>}
+      {error && <Error>Invalid Date</Error>}
       <Title>{title}</Title>
       <InputContainer>
         <CalendarIcon />
-        <Input type="text" placeholder="Choose Date" />
-        <Button type="button">
-          <CrossIcon />
-        </Button>
+        <Input
+          type="text"
+          placeholder="DD.MM.YYYY"
+          value={inputValue}
+          onChange={handleOnChange}
+        />
+        {dateIsChosen ? (
+          <Button type="button" onClick={handleOnCrossClick}>
+            <CrossIcon />
+          </Button>
+        ) : (
+          <Button type="button" onClick={handleOnCheckMarkClick}>
+            <CheckMarkIcon />
+          </Button>
+        )}
       </InputContainer>
     </Container>
   )

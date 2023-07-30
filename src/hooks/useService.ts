@@ -29,7 +29,21 @@ const useService = (service: Service): UseServiceType => {
     const nextDate = new Date(service.getPreviousDate(currentDate))
     setCurrentDate(nextDate)
   }
-  return [currentDate, monthesDates, handleNextRange, handlePreviousRange]
+
+  const changeCurrentDate = (newDate: string) => {
+    if (newDate) {
+      setCurrentDate(service.getDateByString(newDate))
+    } else {
+      setCurrentDate(service.getCurrentDate())
+    }
+  }
+  return [
+    currentDate,
+    monthesDates,
+    handleNextRange,
+    handlePreviousRange,
+    changeCurrentDate,
+  ]
 }
 
 export default useService

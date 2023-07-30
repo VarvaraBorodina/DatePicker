@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Todo } from '../../services/types'
-import CrossIcon from '../icons/CrossIncons'
+import CrossIcon from '../icons/CrossIcon'
 import {
   Container,
   Input,
