@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import TEXT from '../../constants/text'
 import { Todo } from '../../services/types'
 import CrossIcon from '../icons/CrossIcon'
 import {
@@ -50,7 +51,7 @@ const TodoList: React.FC<TodoListProps> = ({
       </Title>
       <InputContainer>
         <Input value={inputValue} onChange={handleOnChange} />
-        <AddButton onClick={handleOnSaveClick}>Add</AddButton>
+        <AddButton onClick={handleOnSaveClick}>{TEXT.ADD_TODO}</AddButton>
       </InputContainer>
       <Todos>
         {currentTodos.map(({ text, id }) => (

@@ -13,6 +13,7 @@ import useService from '../../hooks/useService'
 import MonthBlock from '../MonthBlock'
 import { Todo } from '../../services/types'
 import useDatesRange from '../../hooks/useDatesRange'
+import ErrorBoundary from '../ErrorBoundary'
 
 const Calendar: React.FC<CalendarProps> = (props) => {
   const { color, type, todoList, min, max } = props
@@ -54,49 +55,51 @@ const Calendar: React.FC<CalendarProps> = (props) => {
     return service.isStringValidData(dateString)
   }
   return (
-    <GlobalThemProvider color={color}>
-      <Container>
-        <SelectDataForm
-          changeCurrentDate={changeCurrentDate}
-          changeFromDate={handleRangeStart}
-          changeToDate={handleRangeEnd}
-          isValidDate={isValidDate}
-        />
-        <CalendarContainer>
-          {type === CalendarType.year && (
-            <CalendarHeader
-              title={currentDate.getFullYear().toString()}
-              onPrevious={handlePreviousRange}
-              onNext={handleNextRange}
-              withArrows={type === CalendarType.year}
-              nextDisable={!isNext}
-              prevDisable={!isPrev}
-            />
-          )}
-          <Year>
-            {monthesDates.map((monthDates: Date[], index: number) => (
-              <MonthBlock
-                key={MONTH_NAMES[index]}
-                title={`${
-                  MONTH_NAMES[getMonth(monthDates, currentDate)]
-                } ${currentDate.getFullYear()}`}
-                blockDates={monthDates}
-                handleNextRange={handleNextRange}
-                handlePrevRange={handlePreviousRange}
-                getDayType={getDayTypeForCurrentCalendarType(monthDates)}
-                type={type ?? CalendarType.month}
-                firstDayOfWeek={service.firstDayOfWeek}
-                saveDayTodo={saveDayTodo}
-                getDayTodos={getDayTodos}
-                isTodoListAvailable={todoList ?? false}
+    <ErrorBoundary>
+      <GlobalThemProvider color={color}>
+        <Container>
+          <SelectDataForm
+            changeCurrentDate={changeCurrentDate}
+            changeFromDate={handleRangeStart}
+            changeToDate={handleRangeEnd}
+            isValidDate={isValidDate}
+          />
+          <CalendarContainer>
+            {type === CalendarType.year && (
+              <CalendarHeader
+                title={currentDate.getFullYear().toString()}
+                onPrevious={handlePreviousRange}
+                onNext={handleNextRange}
+                withArrows={type === CalendarType.year}
                 nextDisable={!isNext}
                 prevDisable={!isPrev}
               />
-            ))}
-          </Year>
-        </CalendarContainer>
-      </Container>
-    </GlobalThemProvider>
+            )}
+            <Year>
+              {monthesDates.map((monthDates: Date[], index: number) => (
+                <MonthBlock
+                  key={MONTH_NAMES[index]}
+                  title={`${
+                    MONTH_NAMES[getMonth(monthDates, currentDate)]
+                  } ${currentDate.getFullYear()}`}
+                  blockDates={monthDates}
+                  handleNextRange={handleNextRange}
+                  handlePrevRange={handlePreviousRange}
+                  getDayType={getDayTypeForCurrentCalendarType(monthDates)}
+                  type={type ?? CalendarType.month}
+                  firstDayOfWeek={service.firstDayOfWeek}
+                  saveDayTodo={saveDayTodo}
+                  getDayTodos={getDayTodos}
+                  isTodoListAvailable={todoList ?? false}
+                  nextDisable={!isNext}
+                  prevDisable={!isPrev}
+                />
+              ))}
+            </Year>
+          </CalendarContainer>
+        </Container>
+      </GlobalThemProvider>
+    </ErrorBoundary>
   )
 }
 
