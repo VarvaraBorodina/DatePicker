@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import TEXT from '../../constants/text'
 import CalendarIcon from '../icons/CalendarIcon'
 import CheckMarkIcon from '../icons/CheckMarkIcon'
 import CrossIcon from '../icons/CrossIcon'
@@ -55,7 +56,7 @@ const DateInput: React.FC<DateInputProps> = ({
         <CalendarIcon />
         <Input
           type="text"
-          placeholder="DD.MM.YYYY"
+          placeholder={TEXT.DATE_PATTERN}
           value={inputValue}
           onChange={handleOnChange}
         />

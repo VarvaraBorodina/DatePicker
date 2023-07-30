@@ -1,4 +1,5 @@
 import React from 'react'
+import TEXT from '../../constants/text'
 import DateInput from '../DateInput'
 import { Inputs } from './styled'
 import { SelectDataFormProps } from './types'
@@ -12,17 +13,17 @@ const SelectDataForm: React.FC<SelectDataFormProps> = ({
   return (
     <Inputs>
       <DateInput
-        title="Date"
+        title={TEXT.DATE}
         changeDate={changeCurrentDate}
         isValidDate={isValidDate}
       />
       <DateInput
-        title="From"
+        title={TEXT.FROM}
         changeDate={changeFromDate}
         isValidDate={isValidDate}
       />
       <DateInput
-        title="To"
+        title={TEXT.TO}
         changeDate={changeToDate}
         isValidDate={isValidDate}
       />
