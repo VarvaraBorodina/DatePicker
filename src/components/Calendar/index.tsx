@@ -12,11 +12,14 @@ import getMonth from '../../utils/getMonth'
 import useService from '../../hooks/useService'
 import MonthBlock from '../MonthBlock'
 import { Todo } from '../../services/types'
+import useDatesRange from '../../hooks/useDatesRange'
 
 const Calendar: React.FC<CalendarProps> = (props) => {
   const { color, type, todoList, min, max } = props
 
   const service = useMemo(() => createService(props), [props])
+  const [rangeStart, rangeEnd, handleRangeStart, handleRangeEnd] =
+    useDatesRange(service)
   const [
     currentDate,
     monthesDates,
@@ -27,14 +30,12 @@ const Calendar: React.FC<CalendarProps> = (props) => {
 
   const getDayTypeForCurrentCalendarType =
     (monthDates: Date[]) => (date: Date) => {
-      return getDayType(
-        date,
-        currentDate,
+      const month =
         type === CalendarType.year
           ? getMonth(monthDates, currentDate)
-          : currentDate.getMonth(),
-        service
-      )
+          : currentDate.getMonth()
+
+      return getDayType(date, currentDate, rangeStart, rangeEnd, month, service)
     }
 
   const getDayTodos = (day: Date) => service.getDayTodoFromLocalStorage(day)
@@ -52,12 +53,13 @@ const Calendar: React.FC<CalendarProps> = (props) => {
   const isValidDate = (dateString: string) => {
     return service.isStringValidData(dateString)
   }
-
   return (
     <GlobalThemProvider color={color}>
       <Container>
         <SelectDataForm
           changeCurrentDate={changeCurrentDate}
+          changeFromDate={handleRangeStart}
+          changeToDate={handleRangeEnd}
           isValidDate={isValidDate}
         />
         <CalendarContainer>
@@ -72,7 +74,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
             />
           )}
           <Year>
-            {monthesDates.map((monthDates, index) => (
+            {monthesDates.map((monthDates: Date[], index: number) => (
               <MonthBlock
                 key={MONTH_NAMES[index]}
                 title={`${

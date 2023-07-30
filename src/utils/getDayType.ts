@@ -5,6 +5,8 @@ import { isDatesEqual } from './comparisonDates'
 const getDayType = (
   day: Date,
   currentDate: Date,
+  rangeStart: Date | null,
+  rangeEnd: Date | null,
   month: number,
   service: Service
 ): DayType => {
@@ -22,6 +24,9 @@ const getDayType = (
   }
   if (day.getMonth() !== month) {
     return DayType.anotherMonth
+  }
+  if (rangeStart && rangeEnd && day >= rangeStart && day <= rangeEnd) {
+    return DayType.inRange
   }
   return DayType.default
 }

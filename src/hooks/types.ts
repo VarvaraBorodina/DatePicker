@@ -6,4 +6,11 @@ type UseServiceType = [
   (newDate: string) => void,
 ]
 
-export default UseServiceType
+type UseDatesRangeType = [
+  Date | null,
+  Date | null,
+  (newDate: string) => void,
+  (newDate: string) => void,
+]
+
+export { UseServiceType, UseDatesRangeType }
