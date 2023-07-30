@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import CalendarType from '@/constants/calendarType'
+import FirstDayOfWeek from '@/constants/firstDayOfWeek'
 
 import Calendar from './index'
 
@@ -15,18 +16,24 @@ const min = new Date(2022, 5, 1)
 const max = new Date(2025, 9, 1)
 
 type Story = StoryObj<typeof meta>
-export const Week: Story = {
-  args: { color: '#f70279', type: CalendarType.week, todoList: true, min, max },
-}
+
 export const Base: Story = {
+  args: {},
+}
+
+export const Week: Story = {
+  args: { color: '#FBB714', type: CalendarType.week, todoList: true, min, max },
+}
+
+export const Year: Story = {
   args: {
-    color: '#f70279',
-    type: CalendarType.month,
+    color: '#61EB66',
+    type: CalendarType.year,
     todoList: true,
     min,
     max,
+    weekends: true,
+    daysOff: true,
+    firstDayOfWeek: FirstDayOfWeek.sunday,
   },
-}
-export const Year: Story = {
-  args: { color: '#f70279', type: CalendarType.year, todoList: true, min, max },
 }

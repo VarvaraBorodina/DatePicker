@@ -13,6 +13,9 @@ const getDayType = (
   if (isDatesEqual(day, currentDate) && month === day.getMonth()) {
     return DayType.chosen
   }
+  if (rangeStart && rangeEnd && day >= rangeStart && day <= rangeEnd) {
+    return DayType.inRange
+  }
   if (
     (service.isWeekend(day) || service.isDayOff(day)) &&
     day.getMonth() !== month
@@ -24,9 +27,6 @@ const getDayType = (
   }
   if (day.getMonth() !== month) {
     return DayType.anotherMonth
-  }
-  if (rangeStart && rangeEnd && day >= rangeStart && day <= rangeEnd) {
-    return DayType.inRange
   }
   return DayType.default
 }
