@@ -11,7 +11,7 @@ const meta: Meta<typeof Calendar> = {
 export default meta
 
 const min = new Date(2022, 5, 1)
-const max = new Date(2023, 9, 1)
+const max = new Date(2025, 9, 1)
 
 type Story = StoryObj<typeof meta>
 export const Week: Story = {
