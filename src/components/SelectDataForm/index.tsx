@@ -1,6 +1,8 @@
 import React from 'react'
-import TEXT from '../../constants/text'
-import DateInput from '../DateInput'
+
+import DateInput from '@/components/DateInput'
+import TEXT from '@/constants/text'
+
 import { Inputs } from './styled'
 import { SelectDataFormProps } from './types'
 

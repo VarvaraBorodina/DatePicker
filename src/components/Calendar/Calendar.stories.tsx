@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import CalendarType from '../../constants/calendarType'
+
+import CalendarType from '@/constants/calendarType'
 
 import Calendar from './index'
 

@@ -25,4 +25,4 @@ const Title = styled.h5`
   opacity: ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}`};
 `
 
-export { Container, Button, Title }
+export { Button, Container, Title }

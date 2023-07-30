@@ -1,4 +1,4 @@
-import ServiceDecorator from './ServiceDecorator'
+import ServiceDecorator from '@/services/decorators/ServiceDecorator'
 
 class WeekCalendarDecorator extends ServiceDecorator {
   getPreviousDate(currentDate: Date): Date {

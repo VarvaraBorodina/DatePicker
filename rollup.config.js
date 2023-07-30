@@ -7,6 +7,8 @@ import terser from '@rollup/plugin-terser'
 import PeerDepsExternalPlugin from 'rollup-plugin-peer-deps-external'
 import eslint from '@rollup/plugin-eslint'
 
+import alias from '@rollup/plugin-alias'
+
 const packageJson = require('./package.json')
 
 export default [
@@ -33,6 +35,10 @@ export default [
 
       terser(),
       eslint({}),
+
+      alias({
+        entries: [{ find: '@', replacement: './src' }],
+      }),
     ],
   },
   {

@@ -1,5 +1,5 @@
-import { Service } from '../types'
-import ServiceDecorator from './ServiceDecorator'
+import ServiceDecorator from '@/services/decorators/ServiceDecorator'
+import { Service } from '@/services/types'
 
 class MinDateDecorator extends ServiceDecorator {
   minDate: Date

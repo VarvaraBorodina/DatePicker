@@ -1,5 +1,5 @@
-import DayType from '../constants/dayType'
-import { Theme } from './types'
+import DayType from '@/constants/dayType'
+import { Theme } from '@/utils/types'
 
 const getDayColorsByType = (dayType: DayType, theme: Theme): string => {
   switch (dayType) {

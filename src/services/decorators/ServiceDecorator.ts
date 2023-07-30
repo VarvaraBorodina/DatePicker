@@ -1,5 +1,5 @@
-import FirstDayOfWeek from '../../constants/firstDayOfWeek'
-import { Service, Todo } from '../types'
+import FirstDayOfWeek from '@/constants/firstDayOfWeek'
+import { Service, Todo } from '@/services/types'
 
 class ServiceDecorator implements Service {
   service: Service

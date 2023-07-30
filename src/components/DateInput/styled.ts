@@ -11,7 +11,7 @@ const InputContainer = styled.div`
   padding: ${({ theme }) => theme.SPACES.S}px ${({ theme }) => theme.SPACES.M}px;
   background-color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
   border-radius: ${({ theme }) => theme.SPACES.S}px;
-  border: solid 1px
+  border: solid ${({ theme }) => theme.SIZES.BORDER_WIDTH}px
     ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.S}`};
 `
 
@@ -55,4 +55,4 @@ const Button = styled.button`
   cursor: pointer;
 `
 
-export { InputContainer, Input, Error, Button, Title, Container }
+export { Button, Container, Error, Input, InputContainer, Title }

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Service } from '../services/types'
-import UseServiceType from './types'
+
+import { Service } from '@/services/types'
+
+import { UseServiceType } from './types'
 
 const useService = (service: Service): UseServiceType => {
   const [currentDate, setCurrentDate] = useState(service.getCurrentDate())

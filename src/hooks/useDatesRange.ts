@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import { Service } from '../services/types'
+
+import { Service } from '@/services/types'
+
 import { UseDatesRangeType } from './types'
 
 const useDatesRange = (service: Service): UseDatesRangeType => {

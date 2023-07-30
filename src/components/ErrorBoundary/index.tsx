@@ -1,5 +1,6 @@
 import React from 'react'
-import TEXT from '../../constants/text'
+
+import TEXT from '@/constants/text'
 
 import { ErrorProps, ErrorState } from './types'
 

@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import FirstDayOfWeek from '../constants/firstDayOfWeek'
+import FirstDayOfWeek from '@/constants/firstDayOfWeek'
+
 import { Service, Todo } from './types'
 
 class DefaultService implements Service {
@@ -103,19 +103,19 @@ class DefaultService implements Service {
     return true
   }
 
-  isWeekend(currentDate: Date): boolean {
+  isWeekend(): boolean {
     return false
   }
 
-  isDayOff(currentDate: Date): boolean {
+  isDayOff(): boolean {
     return false
   }
 
-  getDayTodoFromLocalStorage(day: Date): Todo[] {
+  getDayTodoFromLocalStorage(): Todo[] {
     return []
   }
 
-  setDayTodoToLocalStorage(day: string, todo: Todo): Todo[] {
+  setDayTodoToLocalStorage(): Todo[] {
     return []
   }
 

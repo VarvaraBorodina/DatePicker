@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
-import TEXT from '../../constants/text'
-import { Todo } from '../../services/types'
-import CrossIcon from '../icons/CrossIcon'
+
+import CrossIcon from '@/components/icons/CrossIcon'
+import TEXT from '@/constants/text'
+import { Todo } from '@/services/types'
+
 import {
-  Container,
-  Input,
-  Button,
-  Title,
-  DateTitle,
-  InputContainer,
   AddButton,
-  Todos,
+  Button,
+  Container,
+  DateTitle,
+  Input,
+  InputContainer,
+  Title,
   TodoItem,
+  Todos,
 } from './styled'
 import TodoListProps from './types'
 

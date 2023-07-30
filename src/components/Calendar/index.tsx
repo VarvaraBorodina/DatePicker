@@ -1,19 +1,21 @@
 import React, { useMemo } from 'react'
-import GlobalThemProvider from '../GlobalThemeProvider'
+
+import CalendarHeader from '@/components/CalendarHeader'
+import ErrorBoundary from '@/components/ErrorBoundary'
+import GlobalThemeProvider from '@/components/GlobalThemeProvider'
+import MonthBlock from '@/components/MonthBlock'
+import SelectDataForm from '@/components/SelectDataForm'
+import CalendarType from '@/constants/calendarType'
+import MONTH_NAMES from '@/constants/months'
+import useDatesRange from '@/hooks/useDatesRange'
+import useService from '@/hooks/useService'
+import createService from '@/services/createService'
+import { Todo } from '@/services/types'
+import getDayType from '@/utils/getDayType'
+import getMonth from '@/utils/getMonth'
+
 import { CalendarContainer, Container, Year } from './styled'
 import CalendarProps from './types'
-import createService from '../../services/createService'
-import CalendarHeader from '../CalendarHeader'
-import MONTH_NAMES from '../../constants/months'
-import getDayType from '../../utils/getDayType'
-import CalendarType from '../../constants/calendarType'
-import SelectDataForm from '../SelectDataForm'
-import getMonth from '../../utils/getMonth'
-import useService from '../../hooks/useService'
-import MonthBlock from '../MonthBlock'
-import { Todo } from '../../services/types'
-import useDatesRange from '../../hooks/useDatesRange'
-import ErrorBoundary from '../ErrorBoundary'
 
 const Calendar: React.FC<CalendarProps> = (props) => {
   const { color, type, todoList, min, max } = props
@@ -56,7 +58,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
   }
   return (
     <ErrorBoundary>
-      <GlobalThemProvider color={color}>
+      <GlobalThemeProvider color={color}>
         <Container>
           <SelectDataForm
             changeCurrentDate={changeCurrentDate}
@@ -98,7 +100,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
             </Year>
           </CalendarContainer>
         </Container>
-      </GlobalThemProvider>
+      </GlobalThemeProvider>
     </ErrorBoundary>
   )
 }

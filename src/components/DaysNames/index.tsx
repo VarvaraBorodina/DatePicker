@@ -1,7 +1,9 @@
 import React from 'react'
-import DAYS_OF_WEEK from '../../constants/dayOfWeek'
-import FirstDayOfWeek from '../../constants/firstDayOfWeek'
-import { DayName, Container } from './styled'
+
+import DAYS_OF_WEEK from '@/constants/dayOfWeek'
+import FirstDayOfWeek from '@/constants/firstDayOfWeek'
+
+import { Container, DayName } from './styled'
 
 const DaysNames: React.FC<{ firstDayOfWeek: FirstDayOfWeek }> = ({
   firstDayOfWeek,
