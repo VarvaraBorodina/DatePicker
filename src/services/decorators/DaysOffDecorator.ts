@@ -1,22 +1,15 @@
 import DAYS_OFF from '@/constants/daysOff'
 import ServiceDecorator from '@/services/decorators/ServiceDecorator'
-import { Holiday, Service } from '@/services/types'
+import { DayOff } from '@/services/types'
 
 class DaysOffDecorator extends ServiceDecorator {
-  holidays: Holiday[]
-
-  constructor(service: Service, holidays?: Holiday[]) {
-    super(service)
-    this.holidays = holidays ?? DAYS_OFF
-  }
-
   isDayOff(currentDate: Date): boolean {
-    const currentDay: Holiday = {
+    const currentDay: DayOff = {
       day: currentDate.getDate(),
       month: currentDate.getMonth() + 1,
     }
     return (
-      this.holidays.findIndex(
+      DAYS_OFF.findIndex(
         ({ day, month }) => day === currentDay.day && month === currentDay.month
       ) !== -1
     )

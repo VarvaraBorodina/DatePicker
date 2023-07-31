@@ -1,4 +1,5 @@
 import FirstDayOfWeek from '@/constants/firstDayOfWeek'
+import TEXT from '@/constants/text'
 
 import { Service, Todo } from './types'
 
@@ -43,7 +44,7 @@ class DefaultService implements Service {
   }
 
   getDateByString(dataString: string): Date {
-    const [day, month, year]: string[] = dataString.split('.')
+    const [day, month, year]: string[] = dataString.split(TEXT.DATE_DIVIDER)
     return new Date(
       year as unknown as number,
       (month as unknown as number) - 1,
@@ -56,16 +57,16 @@ class DefaultService implements Service {
       return false
     }
 
-    const dateParams: string[] = dataString.split('.')
+    const dateParams: string[] = dataString.split(TEXT.DATE_DIVIDER)
     let isValidDataFlag = true
 
     const [day, month, year]: number[] = dateParams.map((dateParam: string) => {
       if (Number.isNaN(+dateParam)) {
-        isValidDataFlag = true
+        isValidDataFlag = false
       }
       const numberParam = +dateParam as unknown as number
       if (numberParam !== Math.floor(numberParam)) {
-        isValidDataFlag = true
+        isValidDataFlag = false
       }
       return numberParam
     })
