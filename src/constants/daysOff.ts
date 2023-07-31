@@ -1,6 +1,6 @@
-import { Holiday } from '@/services/types'
+import { DayOff } from '@/services/types'
 
-const DAYS_OFF: Holiday[] = [
+const DAYS_OFF: DayOff[] = [
   { day: 1, month: 1 },
   { day: 8, month: 3 },
   { day: 9, month: 5 },

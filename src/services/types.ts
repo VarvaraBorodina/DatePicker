@@ -7,7 +7,7 @@ export interface Todo {
 
 export type DaysTodosType = { [key: string]: Todo[] }
 
-export type Holiday = { day: number; month: number }
+export type DayOff = { day: number; month: number }
 
 export interface Service {
   firstDayOfWeek: FirstDayOfWeek
