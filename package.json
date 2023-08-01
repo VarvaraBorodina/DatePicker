@@ -1,7 +1,7 @@
 {
   "name": "calendar-with-todo-list",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "repository": "https://github.com/VarvaraBorodina/DatePicker.git",
   "author": "Varvara Borodina",
   "license": "MIT",
@@ -13,6 +13,7 @@
     "calendar",
     "react"
   ],
+  "main": "dist/esm/index.js",
   "homepage": "https://github.com/VarvaraBorodina/DatePicker#readme",
   "types": "dist/index.d.ts",
   "dependencies": {
