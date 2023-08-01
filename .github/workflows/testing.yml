@@ -8,5 +8,9 @@ jobs:
         uses: actions/checkout@v3
       - name: Install dependencies
         run: yarn install
+      - name: Fix dependencies
+        run: rm -rf /node_modules/string-width
+        run: cp /node_modules/string-width-cjs /node_modules/string-width
+        run: rm -rf /node_modules/string-width-cjs
       - name: Test library
         run: yarn run test
