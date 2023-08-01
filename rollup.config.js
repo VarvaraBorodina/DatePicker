@@ -8,7 +8,6 @@ import PeerDepsExternalPlugin from 'rollup-plugin-peer-deps-external'
 import eslint from '@rollup/plugin-eslint'
 
 import alias from '@rollup/plugin-alias'
-const path = require('path')
 
 const packageJson = require('./package.json')
 
@@ -19,10 +18,12 @@ export default [
       {
         file: 'dist/cjs/index.js',
         format: 'cjs',
+        sourcemap: true,
       },
       {
         file: 'dist/esm/index.js',
         format: 'esm',
+        sourcemap: true,
       },
     ],
     plugins: [
@@ -36,9 +37,7 @@ export default [
       eslint({}),
 
       alias({
-        entries: [
-          { find: '@', replacement: path.resolve(__dirname, '../src') },
-        ],
+        entries: [{ find: '@', replacement: './src' }],
       }),
     ],
     external: ['react'],
