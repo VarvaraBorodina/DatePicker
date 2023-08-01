@@ -40,6 +40,7 @@ export default [
         entries: [{ find: '@', replacement: './src' }],
       }),
     ],
+    external: ['react'],
   },
   {
     input: 'dist/cjs/types/src/index.d.ts',
