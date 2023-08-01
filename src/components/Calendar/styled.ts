@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 
-import DayType from '@/constants/dayType'
-import getDayColorsByType from '@/utils/getDayColorsByType'
-import { Theme } from '@/utils/types'
+import {
+  RESPONSIVE_SIZE_L,
+  RESPONSIVE_SIZE_M,
+  RESPONSIVE_SIZE_S,
+} from '@/constants/breakpoints'
 
 const Container = styled.div`
   background-color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
@@ -11,6 +13,16 @@ const Container = styled.div`
 const CalendarContainer = styled.div`
   max-width: ${({ theme }) =>
     theme.SIZES.INPUT_WIDTH * 4 + theme.SPACES.M * 3}px;
+  @media (max-width: ${RESPONSIVE_SIZE_L}px) {
+    max-width: ${({ theme }) =>
+      theme.SIZES.INPUT_WIDTH * 3 + theme.SPACES.M * 2}px;
+  }
+  @media (max-width: ${RESPONSIVE_SIZE_M}px) {
+    max-width: ${({ theme }) => theme.SIZES.INPUT_WIDTH * 2 + theme.SPACES.M}px;
+  }
+  @media (max-width: ${RESPONSIVE_SIZE_S}px) {
+    max-width: ${({ theme }) => theme.SIZES.INPUT_WIDTH}px;
+  }
 `
 
 const Year = styled.div`
@@ -19,33 +31,14 @@ const Year = styled.div`
   grid-gap: ${({ theme }) => theme.SPACES.M}px;
   margin-top: ${({ theme }) => theme.SPACES.M}px;
   margin-bottom: ${({ theme }) => theme.SPACES.M}px;
+  @media (max-width: ${RESPONSIVE_SIZE_L}px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (max-width: ${RESPONSIVE_SIZE_M}px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: ${RESPONSIVE_SIZE_S}px) {
+    grid-template-columns: 1fr;
+  }
 `
-
-const Month = styled.div`
-  width: ${({ theme }) => theme.SIZES.INPUT_WIDTH}px;
-  padding: ${({ theme }) => theme.SPACES.M}px;
-  border-radius: ${({ theme }) => theme.SPACES.S}px;
-  border: solid ${({ theme }) => theme.SIZES.BORDER_WIDTH}px
-    ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.S}`};
-`
-
-const Dates = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  justify-content: space-between;
-`
-
-const Day = styled.p<{ $dayType: DayType }>`
-  font-size: ${({ theme }) => `${theme.FONT_SIZES.S}`}px;
-  font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
-  font-weight: ${({ theme }) => `${theme.FONT_WEIGHT.M}`};
-  width: ${({ theme }) => theme.SIZES.DAY_WIDTH};
-  padding: ${({ theme }) => theme.SPACES.XS}px
-    ${({ theme }) => theme.SPACES.XXS}px;
-  border-radius: ${({ theme }) => theme.SPACES.S}px;
-  text-align: center;
-  ${({ theme, $dayType }) => getDayColorsByType($dayType, theme as Theme)}
-  cursor: pointer;
-`
-export { CalendarContainer, Container, Dates, Day, Month, Year }
+export { CalendarContainer, Container, Year }
