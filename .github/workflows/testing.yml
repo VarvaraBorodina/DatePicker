@@ -12,5 +12,7 @@ jobs:
         run: yarn run test
       - name: Check eslint rules
         run: yarn run eslint --fix "./src/**/*.{js,jsx,ts,tsx,json}"
-      - name: Format with Prettier
+      - name: Format with prettier
         run: yarn run prettier --write "./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
+      - name: Build library
+        run: yarn run rollup -c --bundleConfigAsCjs
