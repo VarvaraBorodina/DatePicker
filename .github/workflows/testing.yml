@@ -10,3 +10,21 @@ jobs:
         run: yarn install
       - name: Test library
         run: yarn run test
+  elslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: yarn install
+      - name: Check eslint rules
+        run: eslint --fix "./src/**/*.{js,jsx,ts,tsx,json}"
+  prettier: 
+    runs-on: ubuntu-latest
+      steps:
+        - name: Get repository code
+          uses: actions/checkout@v3
+        - name: Install dependencies
+          run: yarn install
+        - name: Format with prettier
+          run: prettier --write "./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
