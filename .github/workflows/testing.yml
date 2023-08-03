@@ -11,6 +11,6 @@ jobs:
       - name: Test library
         run: yarn run test
       - name: Check eslint rules
-        run: eslint --fix "./src/**/*.{js,jsx,ts,tsx,json}"
+        run: yarn run eslint --fix "./src/**/*.{js,jsx,ts,tsx,json}"
       - name: Format with Prettier
-        run: prettier --write "./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
+        run: yarn run prettier --write "./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
