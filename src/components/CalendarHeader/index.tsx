@@ -1,19 +1,14 @@
 import React from 'react'
 
-import LeftArrow from '@/components/icons/LeftArrow'
-import RightArrow from '@/components/icons/RightArrow'
+import LeftArrow from '@/assets/LeftArrow'
+import RightArrow from '@/assets/RightArrow'
 
 import { Button, Container, Title } from './styled'
 import { CalendarHeaderProps } from './types'
 
-const MonthHeader: React.FC<CalendarHeaderProps> = ({
-  title,
-  withArrows,
-  onNext,
-  onPrevious,
-  nextDisable,
-  prevDisable,
-}) => {
+const MonthHeader: React.FC<CalendarHeaderProps> = (props) => {
+  const { title, withArrows, onNext, onPrevious, nextDisable, prevDisable } =
+    props
   return (
     <Container>
       {withArrows && (

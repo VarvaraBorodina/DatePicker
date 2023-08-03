@@ -27,7 +27,9 @@
     "react/function-component-definition": "off",
     "react/require-default-props": "off",
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "no-param-reassign": "off",
+    "import/no-cycle": "off"
   },
   "settings": {
     "react": {

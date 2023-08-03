@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import CalendarIcon from '@/components/icons/CalendarIcon'
-import CheckMarkIcon from '@/components/icons/CheckMarkIcon'
-import CrossIcon from '@/components/icons/CrossIcon'
-import TEXT from '@/constants/text'
+import CalendarIcon from '@/assets//CalendarIcon'
+import CheckMarkIcon from '@/assets//CheckMarkIcon'
+import CrossIcon from '@/assets/CrossIcon'
+import { TEXT } from '@/constants'
 
 import {
   Button,
@@ -17,11 +17,11 @@ import { DateInputProps } from './types'
 
 const DateInput: React.FC<DateInputProps> = ({
   title,
-  isValidDate,
+  stringDataError,
   changeDate,
 }) => {
   const [inputValue, setInputValue] = useState<string>('')
-  const [error, setError] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
   const [dateIsChosen, setDateIsChosen] = useState<boolean>(false)
 
   const handleOnChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,25 +34,26 @@ const DateInput: React.FC<DateInputProps> = ({
   }
 
   const handleOnCheckMarkClick = () => {
-    if (isValidDate(inputValue)) {
+    const dateError = stringDataError(inputValue)
+    if (!dateError) {
       setDateIsChosen(true)
-      setError(false)
+      setError('')
       changeDate(inputValue)
     } else {
-      setError(true)
+      setError(dateError)
     }
   }
 
   const handleOnCrossClick = () => {
     setInputValue('')
-    setError(false)
+    setError('')
     setDateIsChosen(false)
     changeDate('')
   }
 
   return (
     <Container>
-      {error && <Error>Invalid Date</Error>}
+      {error && <Error>{error}</Error>}
       <Title>{title}</Title>
       <InputContainer>
         <CalendarIcon />

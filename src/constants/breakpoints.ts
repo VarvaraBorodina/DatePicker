@@ -1,3 +1,7 @@
-export const RESPONSIVE_SIZE_L = 1080
-export const RESPONSIVE_SIZE_M = 815
-export const RESPONSIVE_SIZE_S = 540
+enum RESPONSIVE {
+  L = 1080,
+  M = 815,
+  S = 540,
+}
+
+export { RESPONSIVE }

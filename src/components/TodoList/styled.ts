@@ -20,6 +20,7 @@ const Title = styled.div`
 const Button = styled.button`
   display: flex;
   align-items: center;
+  width: ${({ theme }) => `${theme.SIZES.BUTTON_WIDTH}`}px;
   border: none;
   background-color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
   cursor: pointer;

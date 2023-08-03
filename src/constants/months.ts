@@ -13,4 +13,4 @@ const MONTH_NAMES = [
   'December',
 ]
 
-export default MONTH_NAMES
+export { MONTH_NAMES }

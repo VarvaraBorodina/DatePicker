@@ -1,7 +1,6 @@
 import React from 'react'
 
-import DAYS_OF_WEEK from '@/constants/dayOfWeek'
-import FirstDayOfWeek from '@/constants/firstDayOfWeek'
+import { DAYS_OF_WEEK, FirstDayOfWeek } from '@/constants'
 
 import { Container, DayName } from './styled'
 
@@ -17,4 +16,4 @@ const DaysNames: React.FC<{ firstDayOfWeek: FirstDayOfWeek }> = ({
   )
 }
 
-export default DaysNames
+export default React.memo(DaysNames)

@@ -4,8 +4,7 @@ import { fireEvent, render as RTLrender, screen } from '@testing-library/react'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 
-import CalendarType from '@/constants/calendarType'
-import MONTH_NAMES from '@/constants/months'
+import { CalendarType, MONTH_NAMES } from '@/constants'
 import THEME from '@/constants/theme'
 
 import Calendar from '.'
@@ -54,7 +53,7 @@ describe('Calendar', () => {
     render(<Calendar type={CalendarType.year} />)
 
     const currentDate = new Date()
-    const prevButton = screen.getAllByRole('button')[3]
+    const prevButton = screen.getAllByRole('button')[2]
     fireEvent.click(prevButton)
 
     expect(screen.getByText(currentDate.getFullYear() - 1)).toBeInTheDocument()
@@ -64,7 +63,7 @@ describe('Calendar', () => {
     render(<Calendar type={CalendarType.year} />)
 
     const currentDate = new Date()
-    const prevButton = screen.getAllByRole('button')[4]
+    const prevButton = screen.getAllByRole('button')[3]
     fireEvent.click(prevButton)
 
     expect(screen.getByText(currentDate.getFullYear() + 1)).toBeInTheDocument()
@@ -74,7 +73,7 @@ describe('Calendar', () => {
     render(<Calendar type={CalendarType.month} />)
 
     const currentDate = new Date()
-    const prevButton = screen.getAllByRole('button')[3]
+    const prevButton = screen.getAllByRole('button')[2]
     fireEvent.click(prevButton)
 
     expect(screen.getByText(currentDate.getMonth() + 1)).toBeInTheDocument()
@@ -84,7 +83,7 @@ describe('Calendar', () => {
     render(<Calendar type={CalendarType.month} />)
 
     const currentDate = new Date()
-    const prevButton = screen.getAllByRole('button')[4]
+    const prevButton = screen.getAllByRole('button')[3]
     fireEvent.click(prevButton)
 
     expect(screen.getByText(currentDate.getMonth() - 1)).toBeInTheDocument()

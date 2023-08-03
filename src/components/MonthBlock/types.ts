@@ -1,7 +1,5 @@
-import CalendarType from '@/constants/calendarType'
-import DayType from '@/constants/dayType'
-import FirstDayOfWeek from '@/constants/firstDayOfWeek'
-import { Todo } from '@/services/types'
+import { CalendarType, DayType, FirstDayOfWeek } from '@/constants'
+import { Todo } from '@/services'
 
 type MonthBlockProps = {
   title: string
@@ -13,9 +11,11 @@ type MonthBlockProps = {
   firstDayOfWeek: FirstDayOfWeek
   getDayTodos: (day: Date) => Todo[]
   saveDayTodo: (day: Date, todo: Todo) => void
+  deleteDayTodo: (day: Date, id: number) => void
   isTodoListAvailable: boolean
   nextDisable: boolean
   prevDisable: boolean
+  isDayInRange: (day: Date) => boolean
 }
 
 export default MonthBlockProps

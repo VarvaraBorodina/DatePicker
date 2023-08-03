@@ -13,14 +13,14 @@ const render = (component: React.ReactElement) =>
 
 describe('Select Data Form', () => {
   it('Date input on screen', async () => {
-    const isValidDate = jest.fn().mockReturnValue(true)
+    const stringDataError = jest.fn().mockReturnValue('')
     const changeCurrentDate = jest.fn()
     const changeFromDate = jest.fn()
     const changeToDate = jest.fn()
 
     render(
       <SelectDataForm
-        isValidDate={isValidDate}
+        stringDataError={stringDataError}
         changeCurrentDate={changeCurrentDate}
         changeFromDate={changeFromDate}
         changeToDate={changeToDate}
@@ -30,39 +30,39 @@ describe('Select Data Form', () => {
     expect(screen.getByText('Date')).toBeInTheDocument()
   })
 
-  it('From input on screen', async () => {
-    const isValidDate = jest.fn().mockReturnValue(true)
+  it('No from input on screen', async () => {
+    const isValidDate = jest.fn().mockReturnValue('')
     const changeCurrentDate = jest.fn()
     const changeFromDate = jest.fn()
     const changeToDate = jest.fn()
 
     render(
       <SelectDataForm
-        isValidDate={isValidDate}
+        stringDataError={isValidDate}
         changeCurrentDate={changeCurrentDate}
         changeFromDate={changeFromDate}
         changeToDate={changeToDate}
       />
     )
 
-    expect(screen.getByText('From')).toBeInTheDocument()
+    expect(screen.queryByText('From')).toEqual(null)
   })
 
-  it('To input on screen', async () => {
-    const isValidDate = jest.fn().mockReturnValue(true)
+  it('No to input on screen', async () => {
+    const isValidDate = jest.fn().mockReturnValue('')
     const changeCurrentDate = jest.fn()
     const changeFromDate = jest.fn()
     const changeToDate = jest.fn()
 
     render(
       <SelectDataForm
-        isValidDate={isValidDate}
+        stringDataError={isValidDate}
         changeCurrentDate={changeCurrentDate}
         changeFromDate={changeFromDate}
         changeToDate={changeToDate}
       />
     )
 
-    expect(screen.getByText('To')).toBeInTheDocument()
+    expect(screen.queryByText('To')).toEqual(null)
   })
 })

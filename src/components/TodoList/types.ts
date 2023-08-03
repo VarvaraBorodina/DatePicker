@@ -1,9 +1,10 @@
-import { Todo } from '@/services/types'
+import { Todo } from '@/services'
 
 type TodoListProps = {
   day: Date
   handleOnSave: (todo: Todo) => void
   handleOnClose: () => void
+  handleOnDelete: (id: number) => void
   todos: Todo[]
 }
 

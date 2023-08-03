@@ -1,4 +1,5 @@
 import FirstDayOfWeek from '@/constants/firstDayOfWeek'
+import TEXT from '@/constants/text'
 import DefaultService from '@/services/DefaultService'
 
 describe('Default Service', () => {
@@ -76,34 +77,34 @@ describe('Default Service', () => {
     const service = new DefaultService()
     const dateString = 'dsuhdiushd'
 
-    expect(service.isStringValidData(dateString)).toEqual(false)
+    expect(service.stringDataError(dateString)).toEqual(TEXT.INVALID_DATE)
   })
 
   it('Date with another divider should not be valid', () => {
     const service = new DefaultService()
 
     const dateString1 = '12/03/2023'
-    expect(service.isStringValidData(dateString1)).toEqual(false)
+    expect(service.stringDataError(dateString1)).toEqual(TEXT.INVALID_DATE)
   })
 
   it('Not full date should not be valid', () => {
     const service = new DefaultService()
 
     const dateString1 = '12.03'
-    expect(service.isStringValidData(dateString1)).toEqual(false)
+    expect(service.stringDataError(dateString1)).toEqual(TEXT.INVALID_DATE)
 
     const dateString2 = '2023'
-    expect(service.isStringValidData(dateString2)).toEqual(false)
+    expect(service.stringDataError(dateString2)).toEqual(TEXT.INVALID_DATE)
   })
 
   it('Valid date string', () => {
     const service = new DefaultService()
 
     const dateString1 = '12.03.2023'
-    expect(service.isStringValidData(dateString1)).toEqual(true)
+    expect(service.stringDataError(dateString1)).toEqual('')
 
     const dateString2 = '13.12.1989'
-    expect(service.isStringValidData(dateString2)).toEqual(true)
+    expect(service.stringDataError(dateString2)).toEqual('')
   })
 
   it('Test getting date by string', () => {

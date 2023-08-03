@@ -1,3 +1,4 @@
+import TEXT from '@/constants/text'
 import MaxDateDecorator from '@/services/decorators/MaxDateDecorator'
 import DefaultService from '@/services/DefaultService'
 
@@ -14,7 +15,7 @@ describe('Max Date Decorator', () => {
     const service = new MaxDateDecorator(new DefaultService(), maxDate)
 
     const date = '23.05.2030'
-    expect(service.isStringValidData(date)).toEqual(false)
+    expect(service.stringDataError(date)).toEqual(TEXT.DATE_OUT_OF_RANGE)
   })
 
   it('Date before max date should not be valid', () => {
@@ -22,7 +23,7 @@ describe('Max Date Decorator', () => {
     const service = new MaxDateDecorator(new DefaultService(), maxDate)
 
     const date = '10.02.2023'
-    expect(service.isStringValidData(date)).toEqual(true)
+    expect(service.stringDataError(date)).toEqual('')
   })
 
   it('Return current date if it is smaller than max date', () => {

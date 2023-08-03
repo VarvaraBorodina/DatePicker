@@ -45,16 +45,12 @@ class DefaultService implements Service {
 
   getDateByString(dataString: string): Date {
     const [day, month, year]: string[] = dataString.split(TEXT.DATE_DIVIDER)
-    return new Date(
-      year as unknown as number,
-      (month as unknown as number) - 1,
-      day as unknown as number
-    )
+    return new Date(Number(year), Number(month) - 1, Number(day))
   }
 
-  isStringValidData(dataString: string): boolean {
+  stringDataError(dataString: string): string {
     if (dataString.length !== 10) {
-      return false
+      return TEXT.INVALID_DATE
     }
 
     const dateParams: string[] = dataString.split(TEXT.DATE_DIVIDER)
@@ -72,36 +68,36 @@ class DefaultService implements Service {
     })
 
     if (!isValidDataFlag) {
-      return false
+      return TEXT.INVALID_DATE
     }
 
     const longMonth = [0, 2, 4, 6, 7, 9, 11]
 
     if (longMonth.includes(month)) {
       if (day > 31) {
-        return false
+        return TEXT.INVALID_DATE
       }
     }
 
     if (!longMonth.includes(month)) {
       if (day > 30) {
-        return false
+        return TEXT.INVALID_DATE
       }
     }
 
     if (year < 1) {
-      return false
+      return TEXT.INVALID_DATE
     }
 
     if (month === 1 && day > 29 && year % 4 === 0) {
-      return false
+      return TEXT.INVALID_DATE
     }
 
     if (month === 1 && day > 28 && year % 4 > 0) {
-      return false
+      return TEXT.INVALID_DATE
     }
 
-    return true
+    return ''
   }
 
   isWeekend(): boolean {
@@ -123,6 +119,8 @@ class DefaultService implements Service {
   getDaysWithTodoFromLocalStorage(): string[] {
     return []
   }
+
+  deleteDayTodoFromLocalStorage(): void {}
 }
 
 export default DefaultService

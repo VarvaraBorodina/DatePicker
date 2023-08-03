@@ -5,14 +5,10 @@ import ErrorBoundary from '@/components/ErrorBoundary'
 import GlobalThemeProvider from '@/components/GlobalThemeProvider'
 import MonthBlock from '@/components/MonthBlock'
 import SelectDataForm from '@/components/SelectDataForm'
-import CalendarType from '@/constants/calendarType'
-import MONTH_NAMES from '@/constants/months'
-import useDatesRange from '@/hooks/useDatesRange'
-import useService from '@/hooks/useService'
-import createService from '@/services/createService'
-import { Todo } from '@/services/types'
-import getDayType from '@/utils/getDayType'
-import getMonth from '@/utils/getMonth'
+import { CalendarType, MONTH_NAMES } from '@/constants'
+import { useDatesRange, useService } from '@/hooks'
+import { createService, Todo } from '@/services'
+import { getDayType, getMonth } from '@/utils'
 
 import { CalendarContainer, Container, Year } from './styled'
 import CalendarProps from './types'
@@ -47,14 +43,24 @@ const Calendar: React.FC<CalendarProps> = (props) => {
     service.setDayTodoToLocalStorage(day.toDateString(), todo)
   }
 
+  const deleteDayTodo = (day: Date, id: number) =>
+    service.deleteDayTodoFromLocalStorage(day, id)
+
   const isNext = max ? service.getNextDate(new Date(currentDate)) < max : true
 
   const isPrev = min
     ? service.getPreviousDate(new Date(currentDate)) > min
     : true
 
-  const isValidDate = (dateString: string) => {
-    return service.isStringValidData(dateString)
+  const stringDataError = (dateString: string): string => {
+    return service.stringDataError(dateString)
+  }
+
+  const isInDayRange = (date: Date) => {
+    if ((max && date > max) || (min && date < min)) {
+      return false
+    }
+    return true
   }
   return (
     <ErrorBoundary>
@@ -64,7 +70,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
             changeCurrentDate={changeCurrentDate}
             changeFromDate={handleRangeStart}
             changeToDate={handleRangeEnd}
-            isValidDate={isValidDate}
+            stringDataError={stringDataError}
           />
           <CalendarContainer>
             {type === CalendarType.year && (
@@ -91,10 +97,12 @@ const Calendar: React.FC<CalendarProps> = (props) => {
                   type={type ?? CalendarType.month}
                   firstDayOfWeek={service.firstDayOfWeek}
                   saveDayTodo={saveDayTodo}
+                  deleteDayTodo={deleteDayTodo}
                   getDayTodos={getDayTodos}
                   isTodoListAvailable={todoList ?? false}
                   nextDisable={!isNext}
                   prevDisable={!isPrev}
+                  isDayInRange={isInDayRange}
                 />
               ))}
             </Year>

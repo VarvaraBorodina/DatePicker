@@ -1,3 +1,4 @@
+import TEXT from '@/constants/text'
 import MinDateDecorator from '@/services/decorators/MinDateDecorator'
 import DefaultService from '@/services/DefaultService'
 
@@ -14,7 +15,7 @@ describe('Min Date Decorator', () => {
     const service = new MinDateDecorator(new DefaultService(), minDate)
 
     const date = '23.05.2025'
-    expect(service.isStringValidData(date)).toEqual(true)
+    expect(service.stringDataError(date)).toEqual('')
   })
 
   it('Date before min date should not be valid', () => {
@@ -22,7 +23,7 @@ describe('Min Date Decorator', () => {
     const service = new MinDateDecorator(new DefaultService(), minDate)
 
     const date = '10.02.2023'
-    expect(service.isStringValidData(date)).toEqual(false)
+    expect(service.stringDataError(date)).toEqual(TEXT.DATE_OUT_OF_RANGE)
   })
 
   it('Return current date if it is bigger than min date', () => {

@@ -1,5 +1,7 @@
-import ServiceDecorator from '@/services/decorators/ServiceDecorator'
-import { Service } from '@/services/types'
+import { TEXT } from '@/constants'
+import { Service } from '@/services'
+
+import ServiceDecorator from './ServiceDecorator'
 
 class MinDateDecorator extends ServiceDecorator {
   minDate: Date
@@ -9,11 +11,16 @@ class MinDateDecorator extends ServiceDecorator {
     this.minDate = minDate
   }
 
-  isStringValidData(dataString: string): boolean {
-    if (!this.service.isStringValidData(dataString)) {
-      return false
+  stringDataError(dataString: string): string {
+    const serviceError = this.service.stringDataError(dataString)
+
+    if (serviceError) {
+      return serviceError
     }
-    return this.service.getDateByString(dataString) > this.minDate
+    if (this.service.getDateByString(dataString) < this.minDate) {
+      return TEXT.DATE_OUT_OF_RANGE
+    }
+    return ''
   }
 
   getCurrentDate(): Date {
