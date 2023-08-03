@@ -10,6 +10,47 @@ import YearCalendarDecorator from '@/services/decorators/YearCalendarDecorator'
 import DefaultService from '@/services/DefaultService'
 import { Service } from '@/services/types'
 
+const addCalendarType = (service: Service, type: CalendarType): Service => {
+  switch (type) {
+    case CalendarType.week:
+      return new WeekCalendarDecorator(service)
+    case CalendarType.year:
+      return new YearCalendarDecorator(service)
+    case CalendarType.month:
+      return service
+    default:
+      return service
+  }
+}
+
+const addCalendarRange = (
+  service: Service,
+  min: Date | undefined,
+  max: Date | undefined
+): Service => {
+  if (min) {
+    service = new MinDateDecorator(service, min)
+  }
+  if (max) {
+    service = new MaxDateDecorator(service, max)
+  }
+  return service
+}
+
+const addDaysType = (
+  service: Service,
+  weekends: boolean | undefined,
+  daysOff: boolean | undefined
+): Service => {
+  if (weekends) {
+    service = new WeekendsDecorator(service)
+  }
+  if (daysOff) {
+    service = new DaysOffDecorator(service)
+  }
+  return service
+}
+
 const createService = ({
   type,
   min,
@@ -20,27 +61,14 @@ const createService = ({
   daysOff,
 }: CalendarProps): Service => {
   let service: Service = new DefaultService(firstDayOfWeek)
-  if (type === CalendarType.week) {
-    service = new WeekCalendarDecorator(service)
-  }
-  if (type === CalendarType.year) {
-    service = new YearCalendarDecorator(service)
-  }
-  if (min) {
-    service = new MinDateDecorator(service, min)
-  }
-  if (max) {
-    service = new MaxDateDecorator(service, max)
-  }
+  service = addCalendarType(service, type ?? CalendarType.month)
+  service = addCalendarRange(service, min, max)
+  service = addDaysType(service, weekends, daysOff)
+
   if (todoList) {
     service = new TodoListDecorator(service)
   }
-  if (weekends) {
-    service = new WeekendsDecorator(service)
-  }
-  if (daysOff) {
-    service = new DaysOffDecorator(service)
-  }
+
   return service
 }
 

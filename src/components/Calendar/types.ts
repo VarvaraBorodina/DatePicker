@@ -1,5 +1,4 @@
-import CalendarType from '@/constants/calendarType'
-import FirstDayOfWeek from '@/constants/firstDayOfWeek'
+import { CalendarType, FirstDayOfWeek } from '@/constants'
 
 interface CalendarProps {
   type?: CalendarType

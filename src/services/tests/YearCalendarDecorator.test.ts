@@ -1,4 +1,4 @@
-import MONTH_NAMES from '@/constants/months'
+import { MONTH_NAMES } from '@/constants'
 import YearCalendarDecorator from '@/services/decorators/YearCalendarDecorator'
 import DefaultService from '@/services/DefaultService'
 

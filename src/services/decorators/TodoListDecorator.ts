@@ -1,5 +1,6 @@
-import ServiceDecorator from '@/services/decorators/ServiceDecorator'
-import { DaysTodosType, Todo } from '@/services/types'
+import { DaysTodosType, Todo } from '@/services'
+
+import ServiceDecorator from './ServiceDecorator'
 
 class TodoListDecorator extends ServiceDecorator {
   getDayTodoFromLocalStorage(day: Date): Todo[] {
@@ -39,6 +40,23 @@ class TodoListDecorator extends ServiceDecorator {
     }
     const todos: DaysTodosType = JSON.parse(todosString)
     return Object.keys(todos)
+  }
+
+  deleteDayTodoFromLocalStorage(day: Date, id: number): void {
+    const todosString = localStorage.getItem('todos')
+    if (todosString) {
+      const todoObject: DaysTodosType = JSON.parse(todosString)
+      if (todoObject.hasOwnProperty(day.toDateString())) {
+        const dayTodos = todoObject[day.toDateString()]
+        const newDayTodos = dayTodos.filter((todo) => todo.id !== id)
+        if (newDayTodos.length === 0) {
+          delete todoObject[day.toDateString()]
+        } else {
+          todoObject[day.toDateString()] = newDayTodos
+        }
+        localStorage.setItem('todos', JSON.stringify(todoObject))
+      }
+    }
   }
 }
 

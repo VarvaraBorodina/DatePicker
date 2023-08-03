@@ -3,30 +3,36 @@ import React, { useState } from 'react'
 import CalendarHeader from '@/components/CalendarHeader'
 import DaysNames from '@/components/DaysNames'
 import TodoList from '@/components/TodoList'
-import CalendarType from '@/constants/calendarType'
-import { Todo } from '@/services/types'
+import { CalendarType, DayType } from '@/constants'
+import { Todo } from '@/services'
 
 import { Dates, Day, Month } from './styled'
 import MonthBlockProps from './types'
 
-const MonthBlock: React.FC<MonthBlockProps> = ({
-  blockDates,
-  title,
-  handleNextRange,
-  handlePrevRange,
-  getDayType,
-  type,
-  firstDayOfWeek,
-  getDayTodos,
-  saveDayTodo,
-  isTodoListAvailable,
-  nextDisable,
-  prevDisable,
-}) => {
+const MonthBlock: React.FC<MonthBlockProps> = (props) => {
+  const {
+    blockDates,
+    title,
+    handleNextRange,
+    handlePrevRange,
+    getDayType,
+    type,
+    firstDayOfWeek,
+    getDayTodos,
+    saveDayTodo,
+    deleteDayTodo,
+    isTodoListAvailable,
+    nextDisable,
+    prevDisable,
+    isDayInRange,
+  } = props
   const [dayOnModal, setDayOnModal] = useState<Date | null>(null)
 
   const handleOnDayClick = (day: Date) => () => {
-    if (isTodoListAvailable) {
+    const isAnotherMonth =
+      getDayType(day) === DayType.anotherMonth ||
+      getDayType(day) === DayType.anotherMonthWeekend
+    if (isTodoListAvailable && !isAnotherMonth && isDayInRange(day)) {
       setDayOnModal(day)
     }
   }
@@ -37,6 +43,10 @@ const MonthBlock: React.FC<MonthBlockProps> = ({
 
   const handleOnSave = (day: Date) => (todo: Todo) => {
     saveDayTodo(day, todo)
+  }
+
+  const handleOnDelete = (day: Date) => (id: number) => {
+    deleteDayTodo(day, id)
   }
 
   if (!dayOnModal) {
@@ -71,6 +81,7 @@ const MonthBlock: React.FC<MonthBlockProps> = ({
       day={dayOnModal}
       handleOnClose={handleOnClose}
       handleOnSave={handleOnSave(dayOnModal)}
+      handleOnDelete={handleOnDelete(dayOnModal)}
       todos={getDayTodos(dayOnModal)}
     />
   )

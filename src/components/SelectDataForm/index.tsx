@@ -1,34 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import DateInput from '@/components/DateInput'
-import TEXT from '@/constants/text'
+import { TEXT } from '@/constants'
 
-import { Inputs } from './styled'
+import { Button, Inputs } from './styled'
 import { SelectDataFormProps } from './types'
 
-const SelectDataForm: React.FC<SelectDataFormProps> = ({
-  changeCurrentDate,
-  changeFromDate,
-  changeToDate,
-  isValidDate,
-}) => {
+const SelectDataForm: React.FC<SelectDataFormProps> = (props) => {
+  const { changeCurrentDate, changeFromDate, changeToDate, stringDataError } =
+    props
+  const [showRange, setShowRange] = useState<boolean>(false)
+
+  const handleOnRangeButton = () => {
+    setShowRange((prevState) => !prevState)
+  }
   return (
     <Inputs>
       <DateInput
         title={TEXT.DATE}
         changeDate={changeCurrentDate}
-        isValidDate={isValidDate}
+        stringDataError={stringDataError}
       />
-      <DateInput
-        title={TEXT.FROM}
-        changeDate={changeFromDate}
-        isValidDate={isValidDate}
-      />
-      <DateInput
-        title={TEXT.TO}
-        changeDate={changeToDate}
-        isValidDate={isValidDate}
-      />
+      <Button onClick={handleOnRangeButton}>
+        {showRange ? TEXT.REMOVE_RANGE : TEXT.ADD_RANGE}
+      </Button>
+      {showRange && (
+        <>
+          <DateInput
+            title={TEXT.FROM}
+            changeDate={changeFromDate}
+            stringDataError={stringDataError}
+          />
+          <DateInput
+            title={TEXT.TO}
+            changeDate={changeToDate}
+            stringDataError={stringDataError}
+          />
+        </>
+      )}
     </Inputs>
   )
 }

@@ -1,6 +1,7 @@
 import DAYS_OFF from '@/constants/daysOff'
-import ServiceDecorator from '@/services/decorators/ServiceDecorator'
 import { DayOff } from '@/services/types'
+
+import ServiceDecorator from './ServiceDecorator'
 
 class DaysOffDecorator extends ServiceDecorator {
   isDayOff(currentDate: Date): boolean {

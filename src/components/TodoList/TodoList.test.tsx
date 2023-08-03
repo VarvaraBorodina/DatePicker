@@ -16,6 +16,7 @@ describe('Check Todo List', () => {
     const day = new Date()
     const onClose = jest.fn()
     const onAdd = jest.fn()
+    const onDelete = jest.fn()
     const todos = [{ id: 1, text: '1234' }]
 
     render(
@@ -23,6 +24,7 @@ describe('Check Todo List', () => {
         day={day}
         handleOnClose={onClose}
         handleOnSave={onAdd}
+        handleOnDelete={onDelete}
         todos={todos}
       />
     )
@@ -34,6 +36,7 @@ describe('Check Todo List', () => {
     const day = new Date()
     const onClose = jest.fn()
     const onAdd = jest.fn()
+    const onDelete = jest.fn()
     const todos = [{ id: 1, text: '1234' }]
 
     render(
@@ -41,6 +44,7 @@ describe('Check Todo List', () => {
         day={day}
         handleOnClose={onClose}
         handleOnSave={onAdd}
+        handleOnDelete={onDelete}
         todos={todos}
       />
     )
@@ -52,11 +56,13 @@ describe('Check Todo List', () => {
     const day = new Date()
     const onClose = jest.fn()
     const onAdd = jest.fn()
+    const onDelete = jest.fn()
     const todos = [{ id: 1, text: '1234' }]
 
     render(
       <TodoList
         day={day}
+        handleOnDelete={onDelete}
         handleOnClose={onClose}
         handleOnSave={onAdd}
         todos={todos}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { Service } from '@/services/types'
+import { Service } from '@/services'
 
 import { UseServiceType } from './types'
 

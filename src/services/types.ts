@@ -18,13 +18,14 @@ export interface Service {
   getCurrentDateRange: (currentDate: Date) => Array<Array<Date>>
 
   getDateByString: (dataString: string) => Date
-  isStringValidData: (dataString: string) => boolean
+  stringDataError: (dataString: string) => string
 
   isWeekend: (currentDate: Date) => boolean
   isDayOff: (currentDate: Date) => boolean
 
   getDayTodoFromLocalStorage: (day: Date) => Todo[]
   setDayTodoToLocalStorage: (day: string, todo: Todo) => Todo[]
+  deleteDayTodoFromLocalStorage: (day: Date, id: number) => void
 
   getDaysWithTodoFromLocalStorage: () => string[]
 }

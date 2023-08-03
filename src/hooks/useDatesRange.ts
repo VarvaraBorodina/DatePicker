@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Service } from '@/services/types'
+import { Service } from '@/services'
 
 import { UseDatesRangeType } from './types'
 
@@ -13,7 +13,7 @@ const useDatesRange = (service: Service): UseDatesRangeType => {
       setRangeStart(null)
       return
     }
-    if (service.isStringValidData(newRangeStart)) {
+    if (!service.stringDataError(newRangeStart)) {
       const startDate = service.getDateByString(newRangeStart)
       if (!rangeEnd || startDate <= rangeEnd) {
         setRangeStart(startDate)
@@ -26,7 +26,7 @@ const useDatesRange = (service: Service): UseDatesRangeType => {
       setRangeEnd(null)
       return
     }
-    if (service.isStringValidData(newRangeEnd)) {
+    if (!service.stringDataError(newRangeEnd)) {
       const endDate = service.getDateByString(newRangeEnd)
       if (!rangeStart || endDate >= rangeStart) {
         setRangeEnd(endDate)

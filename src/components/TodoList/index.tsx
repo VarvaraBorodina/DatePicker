@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import CrossIcon from '@/components/icons/CrossIcon'
-import TEXT from '@/constants/text'
-import { Todo } from '@/services/types'
+import CrossIcon from '@/assets/CrossIcon'
+import { TEXT } from '@/constants'
+import { Todo } from '@/services'
 
 import {
   AddButton,
@@ -17,12 +17,9 @@ import {
 } from './styled'
 import TodoListProps from './types'
 
-const TodoList: React.FC<TodoListProps> = ({
-  day,
-  handleOnClose,
-  handleOnSave,
-  todos,
-}) => {
+const TodoList: React.FC<TodoListProps> = (props) => {
+  const { day, handleOnClose, handleOnSave, handleOnDelete, todos } = props
+
   const [inputValue, setInputValue] = useState('')
   const [currentTodos, setCurrentTodos] = useState(todos)
 
@@ -43,6 +40,13 @@ const TodoList: React.FC<TodoListProps> = ({
       setInputValue('')
     }
   }
+
+  const handleOnDeleteClick = (idToDelete: number) => () => {
+    handleOnDelete(idToDelete)
+    setCurrentTodos((prevTodos) =>
+      prevTodos.filter(({ id }) => id !== idToDelete)
+    )
+  }
   return (
     <Container>
       <Title>
@@ -57,7 +61,14 @@ const TodoList: React.FC<TodoListProps> = ({
       </InputContainer>
       <Todos>
         {currentTodos.map(({ text, id }) => (
-          <TodoItem key={id}>{text}</TodoItem>
+          <TodoItem key={id}>
+            <Title>
+              {text}
+              <Button type="button" onClick={handleOnDeleteClick(id)}>
+                <CrossIcon />
+              </Button>
+            </Title>
+          </TodoItem>
         ))}
       </Todos>
     </Container>

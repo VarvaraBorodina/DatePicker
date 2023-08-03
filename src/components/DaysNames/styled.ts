@@ -9,9 +9,10 @@ const Container = styled.div`
 `
 
 const DayName = styled.p`
-  width: ${({ theme }) => theme.SIZES.DAY_WIDTH};
+  width: ${({ theme }) => theme.SIZES.DAY_NAME_WIDTH}px;
+  text-align: center;
   margin: ${({ theme }) => theme.SPACES.XS}px
-    ${({ theme }) => theme.SIZES.BORDER_WIDTH}px;
+    ${({ theme }) => theme.SPACES.XS}px;
   text-align: center;
   font-size: ${({ theme }) => `${theme.FONT_SIZES.M}`}px;
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};

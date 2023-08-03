@@ -1,6 +1,7 @@
-import DayType from '@/constants/dayType'
-import { Service } from '@/services/types'
-import { isDatesEqual } from '@/utils/comparisonDates'
+import { DayType } from '@/constants'
+import { Service } from '@/services'
+
+import { isDatesEqual } from './comparisonDates'
 
 const getDayType = (
   day: Date,

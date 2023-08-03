@@ -1,6 +1,6 @@
 type DateInputProps = {
   title: string
-  isValidDate: (dateString: string) => boolean
+  stringDataError: (dateString: string) => string
   changeDate: (dateString: string) => void
 }
 

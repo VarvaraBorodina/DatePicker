@@ -26,3 +26,12 @@ todoList?: boolean
 weekends?: boolean
 daysOff?: boolean
 ```
+
+- **type** defines view and size of your calendar.
+- **color** is primary color of calendar. It should be valid css color format, for example hex or rgb.
+- **min** is javascript Date object
+- **max** is javascript Date object
+- **firstDayOfWeek** defines the day a week starts with
+- **todoList** defines if todo list is alavible
+- **weekends** defines if weekedns will be highlight with primary color
+- **daysOff** defines if daysOff (defined by this library) will be highlight with primary color

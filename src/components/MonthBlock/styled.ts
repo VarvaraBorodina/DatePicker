@@ -21,12 +21,12 @@ const Dates = styled.div`
 `
 
 const Day = styled.p<{ $dayType: DayType; $hasTodo: boolean }>`
+  width: ${({ theme }) => theme.SIZES.DAY_WIDTH}px;
+  padding: ${({ theme }) => theme.SPACES.XS}px
+    ${({ theme }) => theme.SPACES.XXS}px;
   font-size: ${({ theme }) => `${theme.FONT_SIZES.S}`}px;
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
   font-weight: ${({ theme }) => `${theme.FONT_WEIGHT.M}`};
-  width: ${({ theme }) => theme.SIZES.DAY_WIDTH};
-  padding: ${({ theme }) => theme.SPACES.XS}px
-    ${({ theme }) => theme.SPACES.XXS}px;
   border-radius: ${({ theme }) => theme.SPACES.S}px;
   text-align: center;
   ${({ theme, $dayType }) => getDayColorsByType($dayType, theme as Theme)}
