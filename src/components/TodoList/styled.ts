@@ -38,7 +38,7 @@ const InputContainer = styled.div`
   margin-top: ${({ theme }) => theme.SPACES.S}px;
 `
 const Input = styled.input`
-  width: ${({ theme }) => theme.SIZES.INPUT_WIDTH * 0.6}px;
+  width: ${({ theme }) => theme.SIZES.INPUT_FORN_WIDTH}px;
   padding: ${({ theme }) => theme.SPACES.XS}px
     ${({ theme }) => theme.SPACES.S}px;
   font-size: ${({ theme }) => `${theme.FONT_SIZES.M}`}px;

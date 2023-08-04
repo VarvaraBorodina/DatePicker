@@ -6,8 +6,8 @@ const CheckMarkIcon = () => {
   return (
     <svg
       fill={`${THEME.COLORS.PRIMARY_COLOR}${THEME.OPACITIES.L}`}
-      height="14px"
-      width="14px"
+      height={THEME.SIZES.BUTTON_WIDTH}
+      width={THEME.SIZES.BUTTON_WIDTH}
       version="1.1"
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"

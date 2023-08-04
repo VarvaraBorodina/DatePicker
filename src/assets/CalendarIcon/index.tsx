@@ -5,9 +5,9 @@ import THEME from '@/constants/theme'
 const CalendarIcon = () => {
   return (
     <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
+      width={THEME.SIZES.ICON_WIDTH}
+      height={THEME.SIZES.ICON_WIDTH}
+      viewBox={`0 0 ${THEME.SIZES.ICON_WIDTH} ${THEME.SIZES.ICON_WIDTH}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -19,7 +19,11 @@ const CalendarIcon = () => {
       </g>
       <defs>
         <clipPath id="clip0_1_539">
-          <rect width="16" height="16" fill="white" />
+          <rect
+            width={THEME.SIZES.ICON_WIDTH}
+            height={THEME.SIZES.ICON_WIDTH}
+            fill="white"
+          />
         </clipPath>
       </defs>
     </svg>

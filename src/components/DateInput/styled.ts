@@ -18,14 +18,13 @@ const InputContainer = styled.div<{ $isChosen: boolean }>`
 `
 
 const Input = styled.input`
-  width: ${({ theme }) => theme.SIZES.INPUT_WIDTH * 0.6}px;
+  width: ${({ theme }) => theme.SIZES.INPUT_FORN_WIDTH}px;
   margin-left: ${({ theme }) => theme.SPACES.S}px;
   border: none;
   font-size: ${({ theme }) => `${theme.FONT_SIZES.M}`}px;
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
   font-weight: ${({ theme }) => `${theme.FONT_WEIGHT.S}`};
   opacity: ${({ theme }) => `0.${theme.OPACITIES.L}`};
-
   &:focus {
     outline: none;
   }
@@ -54,7 +53,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   margin-left: ${({ theme }) => theme.SPACES.XS}px;
-  width: 14px;
+  width: ${({ theme }) => theme.SIZES.BUTTON_WIDTH}px;
   border: none;
   background-color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
   cursor: pointer;

@@ -5,9 +5,9 @@ import THEME from '@/constants/theme'
 const LeftArrow = ({ disable }: { disable: boolean }) => {
   return (
     <svg
-      width="16"
-      height="17"
-      viewBox="0 0 16 17"
+      width={THEME.SIZES.ICON_WIDTH}
+      height={THEME.SIZES.ICON_WIDTH}
+      viewBox={`0 0 ${THEME.SIZES.ICON_WIDTH} ${THEME.SIZES.ICON_WIDTH}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

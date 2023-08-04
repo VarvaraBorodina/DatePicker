@@ -1,3 +1,4 @@
+import { DayAmountInMonth, LONG_MONTHES } from '@/constants'
 import FirstDayOfWeek from '@/constants/firstDayOfWeek'
 import TEXT from '@/constants/text'
 import { getLastDayOfWeek } from '@/utils'
@@ -52,7 +53,7 @@ class DefaultService implements Service {
   }
 
   stringDataError(dataString: string): string {
-    if (dataString.length !== 10) {
+    if (dataString.length !== TEXT.DATE_PATTERN.length) {
       return TEXT.INVALID_DATE
     }
 
@@ -70,33 +71,23 @@ class DefaultService implements Service {
       return numberParam
     })
 
-    if (!isValidDataFlag) {
+    if (!isValidDataFlag || year < 1) {
       return TEXT.INVALID_DATE
     }
 
-    const longMonth = [0, 2, 4, 6, 7, 9, 11]
-
-    if (longMonth.includes(month)) {
-      if (day > 31) {
+    if (LONG_MONTHES.includes(month)) {
+      if (day > DayAmountInMonth.Long) {
         return TEXT.INVALID_DATE
       }
-    }
-
-    if (!longMonth.includes(month)) {
-      if (day > 30) {
-        return TEXT.INVALID_DATE
-      }
-    }
-
-    if (year < 1) {
+    } else if (day > DayAmountInMonth.Short) {
       return TEXT.INVALID_DATE
     }
 
-    if (month === 1 && day > 29 && year % 4 === 0) {
+    if (month === 1 && day > DayAmountInMonth.LongFebruary && year % 4 === 0) {
       return TEXT.INVALID_DATE
     }
 
-    if (month === 1 && day > 28 && year % 4 > 0) {
+    if (month === 1 && day > DayAmountInMonth.ShortFebruary && year % 4 > 0) {
       return TEXT.INVALID_DATE
     }
 

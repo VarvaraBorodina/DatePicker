@@ -5,9 +5,9 @@ import THEME from '@/constants/theme'
 const CrossIcon = () => {
   return (
     <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
+      width={THEME.SIZES.BUTTON_WIDTH}
+      height={THEME.SIZES.BUTTON_WIDTH}
+      viewBox={`0 0 ${THEME.SIZES.BUTTON_WIDTH} ${THEME.SIZES.BUTTON_WIDTH}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

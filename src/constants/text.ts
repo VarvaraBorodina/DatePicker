@@ -3,7 +3,7 @@ const TEXT = {
   FROM: 'From',
   TO: 'To',
   DATE_DIVIDER: '.',
-  DATE_PATTERN: 'DD.MM.YYYYY',
+  DATE_PATTERN: 'DD.MM.YYYY',
   ERROR_TEXT: 'Something went wrong...',
   ADD_TODO: 'Add',
   INVALID_DATE: 'Invalid date',
