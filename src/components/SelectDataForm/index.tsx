@@ -12,6 +12,8 @@ const SelectDataForm: React.FC<SelectDataFormProps> = (props) => {
   const [showRange, setShowRange] = useState<boolean>(false)
 
   const handleOnRangeButton = () => {
+    changeFromDate('')
+    changeToDate('')
     setShowRange((prevState) => !prevState)
   }
   return (
@@ -42,4 +44,4 @@ const SelectDataForm: React.FC<SelectDataFormProps> = (props) => {
   )
 }
 
-export default SelectDataForm
+export default React.memo(SelectDataForm)

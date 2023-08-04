@@ -3,20 +3,23 @@ import styled from 'styled-components'
 const Container = styled.div`
   margin-right: ${({ theme }) => theme.SPACES.M}px;
 `
-const InputContainer = styled.div`
+const InputContainer = styled.div<{ $isChosen: boolean }>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: ${({ theme }) => theme.SIZES.INPUT_WIDTH}px;
   padding: ${({ theme }) => theme.SPACES.S}px ${({ theme }) => theme.SPACES.M}px;
   background-color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
   border-radius: ${({ theme }) => theme.SPACES.S}px;
   border: solid ${({ theme }) => theme.SIZES.BORDER_WIDTH}px
-    ${({ theme }) => `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.S}`};
+    ${({ theme, $isChosen }) =>
+      $isChosen
+        ? theme.COLORS.ACCENT_COLOR
+        : `${theme.COLORS.PRIMARY_COLOR}${theme.OPACITIES.S}`};
 `
 
 const Input = styled.input`
-  width: ${({ theme }) => theme.SIZES.INPUT_WIDTH * 0.7}px;
+  width: ${({ theme }) => theme.SIZES.INPUT_WIDTH * 0.6}px;
+  margin-left: ${({ theme }) => theme.SPACES.S}px;
   border: none;
   font-size: ${({ theme }) => `${theme.FONT_SIZES.M}`}px;
   font-family: ${({ theme }) => `${theme.FONTS.MAIN}`};
@@ -50,6 +53,8 @@ const Title = styled.h3`
 const Button = styled.button`
   display: flex;
   align-items: center;
+  margin-left: ${({ theme }) => theme.SPACES.XS}px;
+  width: 14px;
   border: none;
   background-color: ${({ theme }) => `${theme.COLORS.MAIN_COLOR}`};
   cursor: pointer;

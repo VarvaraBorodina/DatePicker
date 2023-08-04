@@ -1,15 +1,17 @@
+import { DAYS_OF_WEEK } from '@/constants'
+
 import ServiceDecorator from './ServiceDecorator'
 
 class WeekCalendarDecorator extends ServiceDecorator {
   getPreviousDate(currentDate: Date): Date {
     const date = currentDate
-    date.setDate(date.getDate() - 7)
+    date.setDate(date.getDate() - DAYS_OF_WEEK.length)
     return date
   }
 
   getNextDate(currentDate: Date): Date {
     const date = currentDate
-    date.setDate(date.getDate() + 7)
+    date.setDate(date.getDate() + DAYS_OF_WEEK.length)
     return date
   }
 
@@ -22,7 +24,7 @@ class WeekCalendarDecorator extends ServiceDecorator {
     }
 
     const lastDayOfWeek = new Date(firstDayOfWeek)
-    lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6)
+    lastDayOfWeek.setDate(lastDayOfWeek.getDate() - 1 + DAYS_OF_WEEK.length)
 
     return [[firstDayOfWeek, lastDayOfWeek]]
   }

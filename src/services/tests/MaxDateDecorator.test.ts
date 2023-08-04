@@ -55,12 +55,12 @@ describe('Max Date Decorator', () => {
     expect(previousDate.getMonth()).toEqual(currentDate.getMonth() - 1)
   })
 
-  it('Return current date if previous date is bigger than max date', () => {
+  it('Return max date if previous date is bigger than max date', () => {
     const maxDate = new Date(2022, 0, 1)
     const currentDate = new Date(2023, 5, 15)
 
     const service = new MaxDateDecorator(new DefaultService(), maxDate)
-    expect(service.getPreviousDate(currentDate)).toEqual(currentDate)
+    expect(service.getPreviousDate(currentDate)).toEqual(maxDate)
   })
 
   it('Return next date if it is smaller than max date', () => {
@@ -74,11 +74,11 @@ describe('Max Date Decorator', () => {
     expect(nextDate.getMonth()).toEqual(currentDate.getMonth() + 1)
   })
 
-  it('Return current date if next date is bigger than max date', () => {
+  it('Return max date if next date is bigger than max date', () => {
     const maxDate = new Date(2022, 0, 1)
     const currentDate = new Date(2021, 11, 15)
 
     const service = new MaxDateDecorator(new DefaultService(), maxDate)
-    expect(service.getNextDate(currentDate)).toEqual(currentDate)
+    expect(service.getNextDate(currentDate)).toEqual(maxDate)
   })
 })

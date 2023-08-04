@@ -22,7 +22,7 @@ const DateInput: React.FC<DateInputProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState<string>('')
   const [error, setError] = useState<string>('')
-  const [dateIsChosen, setDateIsChosen] = useState<boolean>(false)
+  const [isDateChosen, setIsDateChosen] = useState<boolean>(false)
 
   const handleOnChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = target
@@ -36,18 +36,18 @@ const DateInput: React.FC<DateInputProps> = ({
   const handleOnCheckMarkClick = () => {
     const dateError = stringDataError(inputValue)
     if (!dateError) {
-      setDateIsChosen(true)
       setError('')
       changeDate(inputValue)
+      setIsDateChosen(true)
     } else {
       setError(dateError)
     }
   }
 
   const handleOnCrossClick = () => {
+    setIsDateChosen(false)
     setInputValue('')
     setError('')
-    setDateIsChosen(false)
     changeDate('')
   }
 
@@ -55,7 +55,7 @@ const DateInput: React.FC<DateInputProps> = ({
     <Container>
       {error && <Error>{error}</Error>}
       <Title>{title}</Title>
-      <InputContainer>
+      <InputContainer $isChosen={isDateChosen}>
         <CalendarIcon />
         <Input
           type="text"
@@ -63,13 +63,12 @@ const DateInput: React.FC<DateInputProps> = ({
           value={inputValue}
           onChange={handleOnChange}
         />
-        {dateIsChosen ? (
+        <Button type="button" onClick={handleOnCheckMarkClick}>
+          <CheckMarkIcon />
+        </Button>
+        {inputValue && (
           <Button type="button" onClick={handleOnCrossClick}>
             <CrossIcon />
-          </Button>
-        ) : (
-          <Button type="button" onClick={handleOnCheckMarkClick}>
-            <CheckMarkIcon />
           </Button>
         )}
       </InputContainer>

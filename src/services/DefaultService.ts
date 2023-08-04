@@ -1,5 +1,6 @@
 import FirstDayOfWeek from '@/constants/firstDayOfWeek'
 import TEXT from '@/constants/text'
+import { getLastDayOfWeek } from '@/utils'
 
 import { Service, Todo } from './types'
 
@@ -36,7 +37,9 @@ class DefaultService implements Service {
     }
 
     const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0)
-    while (lastDayOfMonth.getDay() !== (6 + indexOfFirstDayOfWeek) % 7) {
+    while (
+      lastDayOfMonth.getDay() !== getLastDayOfWeek(indexOfFirstDayOfWeek)
+    ) {
       lastDayOfMonth.setDate(lastDayOfMonth.getDate() + 1)
     }
 
@@ -60,7 +63,7 @@ class DefaultService implements Service {
       if (Number.isNaN(+dateParam)) {
         isValidDataFlag = false
       }
-      const numberParam = +dateParam as unknown as number
+      const numberParam = Number(dateParam)
       if (numberParam !== Math.floor(numberParam)) {
         isValidDataFlag = false
       }

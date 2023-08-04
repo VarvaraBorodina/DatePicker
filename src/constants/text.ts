@@ -9,7 +9,7 @@ const TEXT = {
   INVALID_DATE: 'Invalid date',
   DATE_OUT_OF_RANGE: 'Date is out of range',
   ADD_RANGE: 'Add date subsequence',
-  REMOVE_RANGE: 'Hide',
+  REMOVE_RANGE: 'Remove date subsequence',
 }
 
 export default TEXT

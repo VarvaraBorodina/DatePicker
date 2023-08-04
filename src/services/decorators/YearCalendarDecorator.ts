@@ -1,3 +1,6 @@
+import { MONTH_NAMES } from '@/constants'
+import { getLastDayOfWeek } from '@/utils'
+
 import ServiceDecorator from './ServiceDecorator'
 
 class YearCalendarDecorator extends ServiceDecorator {
@@ -16,17 +19,18 @@ class YearCalendarDecorator extends ServiceDecorator {
 
     const monthesRanges: Array<Array<Date>> = []
 
-    for (let i = 0; i < 12; i += 1) {
+    for (let i = 0; i < MONTH_NAMES.length; i += 1) {
       const indexOfFirstDayOfWeek = this.service.firstDayOfWeek as number
       const firstDayOfMonth = new Date(currentYear, i, 1)
       while (firstDayOfMonth.getDay() !== indexOfFirstDayOfWeek) {
         firstDayOfMonth.setDate(firstDayOfMonth.getDate() - 1)
       }
       const lastDayOfMonth = new Date(currentYear, i + 1, 0)
-      while (lastDayOfMonth.getDay() - 1 !== 4 + indexOfFirstDayOfWeek) {
+      while (
+        lastDayOfMonth.getDay() !== getLastDayOfWeek(indexOfFirstDayOfWeek)
+      ) {
         lastDayOfMonth.setDate(lastDayOfMonth.getDate() + 1)
       }
-      lastDayOfMonth.setDate(lastDayOfMonth.getDate() + 1)
 
       monthesRanges.push([firstDayOfMonth, lastDayOfMonth])
     }

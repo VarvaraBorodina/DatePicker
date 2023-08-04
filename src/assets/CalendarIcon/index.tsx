@@ -26,4 +26,4 @@ const CalendarIcon = () => {
   )
 }
 
-export default CalendarIcon
+export default React.memo(CalendarIcon)

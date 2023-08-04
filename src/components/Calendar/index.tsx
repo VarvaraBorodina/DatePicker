@@ -46,11 +46,12 @@ const Calendar: React.FC<CalendarProps> = (props) => {
   const deleteDayTodo = (day: Date, id: number) =>
     service.deleteDayTodoFromLocalStorage(day, id)
 
-  const isNext = max ? service.getNextDate(new Date(currentDate)) < max : true
+  const isNext =
+    max && monthesDates.length
+      ? monthesDates[monthesDates.length - 1][1] < max
+      : true
 
-  const isPrev = min
-    ? service.getPreviousDate(new Date(currentDate)) > min
-    : true
+  const isPrev = min && monthesDates.length ? monthesDates[0][0] > min : true
 
   const stringDataError = (dateString: string): string => {
     return service.stringDataError(dateString)

@@ -27,4 +27,4 @@ const RightArrow = ({ disable }: { disable: boolean }) => {
   )
 }
 
-export default RightArrow
+export default React.memo(RightArrow)
