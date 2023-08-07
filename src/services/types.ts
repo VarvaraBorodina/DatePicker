@@ -12,6 +12,9 @@ export type DayOff = { day: number; month: number }
 export interface Service {
   firstDayOfWeek: FirstDayOfWeek
 
+  maxDate?: Date
+  minDate?: Date
+
   getCurrentDate: () => Date
   getPreviousDate: (currentDate: Date) => Date
   getNextDate: (currentDate: Date) => Date

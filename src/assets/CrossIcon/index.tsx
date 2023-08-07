@@ -19,4 +19,4 @@ const CrossIcon = () => {
   )
 }
 
-export default React.memo(CrossIcon)
+export default CrossIcon

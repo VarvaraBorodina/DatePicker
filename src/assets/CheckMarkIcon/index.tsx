@@ -33,4 +33,4 @@ const CheckMarkIcon = () => {
   )
 }
 
-export default React.memo(CheckMarkIcon)
+export default CheckMarkIcon

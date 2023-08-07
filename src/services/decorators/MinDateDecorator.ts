@@ -8,6 +8,7 @@ class MinDateDecorator extends ServiceDecorator {
 
   constructor(service: Service, minDate: Date) {
     super(service)
+    minDate.setDate(minDate.getDate() - 1)
     this.minDate = minDate
   }
 
@@ -17,7 +18,8 @@ class MinDateDecorator extends ServiceDecorator {
     if (serviceError) {
       return serviceError
     }
-    if (this.service.getDateByString(dataString) < this.minDate) {
+
+    if (this.service.getDateByString(dataString) <= this.minDate) {
       return TEXT.DATE_OUT_OF_RANGE
     }
     return ''

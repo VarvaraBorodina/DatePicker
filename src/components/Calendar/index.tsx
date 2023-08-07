@@ -48,7 +48,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
 
   const isNext =
     max && monthesDates.length
-      ? monthesDates[monthesDates.length - 1][1] < max
+      ? monthesDates[monthesDates.length - 1].slice(-1)[0] < max
       : true
 
   const isPrev = min && monthesDates.length ? monthesDates[0][0] > min : true
@@ -58,7 +58,12 @@ const Calendar: React.FC<CalendarProps> = (props) => {
   }
 
   const isInDayRange = (date: Date) => {
-    if ((max && date > max) || (min && date < min)) {
+    const dateToCompare = new Date(date)
+    if (max && dateToCompare > max) {
+      return false
+    }
+    dateToCompare.setDate(dateToCompare.getDate() - 1)
+    if (min && dateToCompare <= min) {
       return false
     }
     return true

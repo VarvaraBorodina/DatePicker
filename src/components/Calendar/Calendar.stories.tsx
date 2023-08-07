@@ -12,13 +12,13 @@ const meta: Meta<typeof Calendar> = {
 
 export default meta
 
-const min = new Date(2022, 5, 1)
-const max = new Date(2023, 9, 20)
+const min = new Date(2022, 5, 10, 14, 30, 0)
+const max = new Date(2023, 9, 20, 14, 30, 0)
 
 type Story = StoryObj<typeof meta>
 
 export const Base: Story = {
-  args: { max },
+  args: { max, min },
 }
 
 export const Week: Story = {
