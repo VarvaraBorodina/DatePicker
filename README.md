@@ -1,6 +1,6 @@
 # Date Picker
 
-[Watch on Storybook](https://develop--wondrous-travesseiro-602d8e.netlify.app/?path=/story/calendar--base)
+[Watch on Storybook](https://64d0a4910641c50007dddc78--wondrous-travesseiro-602d8e.netlify.app/?path=/story/calendar--base)
 
 ### Instalation
 

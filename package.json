@@ -1,7 +1,7 @@
 {
   "name": "calendar-with-todo-list",
   "type": "module",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "repository": "https://github.com/VarvaraBorodina/DatePicker.git",
   "author": "Varvara Borodina",
   "license": "MIT",
