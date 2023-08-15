@@ -1,0 +1,46 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "tsconfigRootDir": "./",
+    "project": ["./tsconfig.json"],
+    "requireConfigFile": false
+  },
+
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:styled-components-a11y/recommended"
+  ],
+  "plugins": ["react", "@typescript-eslint", "prettier", "simple-import-sort"],
+  "rules": {
+    "no-restricted-exports": "off",
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
+    "no-prototype-builtins": "off",
+    "react/function-component-definition": "off",
+    "react/require-default-props": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "no-param-reassign": "off",
+    "import/no-cycle": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": {
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+      }
+    }
+  }
+}

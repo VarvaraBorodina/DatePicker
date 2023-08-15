@@ -1,0 +1,18 @@
+name: Test React Library
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: yarn install
+      - name: Test library
+        run: yarn run test
+      - name: Check eslint rules
+        run: yarn run eslint --fix "./src/**/*.{js,jsx,ts,tsx,json}"
+      - name: Format with prettier
+        run: yarn run prettier --write "./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
+      - name: Build library
+        run: yarn run rollup
